@@ -1,28 +1,25 @@
 @import "./global.scss";
 
-body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-  background-color: $white;
-  box-sizing: border-box;
-}
-
-
 
 .game {
   margin: auto;
+  margin-top: 30px;
   background-color: $blue;
-  border-radius: 50px;
-  width: 50%;
-  height: 50%;
+  border-radius: 30px;
+  width: clamp(400px, 50%, 600px);
   box-sizing: border-box;
   overflow: auto;
   padding: 20px;
 
+  @media (max-width: 550px) {
+    width: 100vw;
+    border-radius: 0;
+  }
+
   > h1 {
     box-sizing: border-box;
     color: $white;
-    font-size: 40px;
+    font-size: clamp(35px, 3.7vw, 50px);
     text-align: center;
     margin: 15px 0;
   }
@@ -92,9 +89,9 @@ body {
         color: transparent;
         text-align: center;
         aspect-ratio: 1;
-        width: 8vw;
+        width: clamp(80px, 8vw, 100px);
         color: $black;
-        font-size: 5vw;
+        font-size: clamp(60px, 5vw, 75px);
         font-weight: 600;
       }
     }
