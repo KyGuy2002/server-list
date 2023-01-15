@@ -1,0 +1,73 @@
+@use "../global/global.scss";
+@use "./card.scss";
+@use "../sections/card-section.scss";
+
+
+.fullwidth-card-section {
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: card-section.$gap;
+    }
+}
+
+
+.fullwidth-card {
+    display: flex;
+    align-items: center;
+    padding: 13px 18px;
+    gap: 20px;
+
+
+    $img-width: 500px;
+    $gradient-start: 0px;
+
+
+
+    > .gradient {
+        height: 100%;
+        width: $img-width - $gradient-start;
+        top: 0;
+        left: $gradient-start;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.11), global.$white);
+    }
+
+    > .banner-img {
+        height: 100%;
+        top: 0;
+        left: 0;
+        width: $img-width;
+    }
+
+
+    .tag-container {
+        width: 20%;
+        justify-content: flex-end;
+    }
+
+
+    > .title-container {
+        > .text {
+            > span {
+                color: global.$black-l !important;
+            }
+
+        }
+    }
+
+
+
+    .stats-container {
+        margin-left: auto;
+    }
+
+
+
+    .body-text {
+        height: 100%;
+        width: 30%;
+    }
+
+
+
+}

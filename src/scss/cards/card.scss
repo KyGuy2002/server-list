@@ -1,0 +1,128 @@
+@import "../global/global.scss";
+
+
+.card {
+    filter: drop-shadow(0px 0px 5px $gray-l);
+
+    background-color: $white;
+    border-radius: 13px;
+    position: relative;
+    overflow: hidden;
+
+
+
+    > .gradient {
+        position: absolute;
+        z-index: -100;
+    }
+
+    > .banner-img {
+        position: absolute;
+        z-index: -200;
+    }
+
+
+
+    > .title-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        > img {
+            width: 54px;
+            aspect-ratio: 1;
+            border-radius: 10px;
+        }
+
+        > .text {
+            
+            > h1 {
+                font-size: 19px;
+                font-weight: 700;
+                color: $black;
+                margin: 0;
+                line-height: 20px;
+            }
+
+            > span {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                font-size: 11px;
+                font-weight: 400;
+                color: $gray;
+            }
+
+            > hr {
+                margin: 0;
+                margin-right: auto;
+                margin-top: 5px;
+                width: 50px;
+                border: none;
+                border-top: 3px solid black; // TODO dynamic color
+            }
+
+        }
+
+    }
+
+
+
+    .body-text {
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 15px;
+        color: $gray;
+        margin: 0;
+    }
+
+
+
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px
+    }
+
+
+
+    .stats-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 15px;
+
+        > div {
+            text-align: center;
+
+            > .label {
+                margin: 0;
+                font-size: 11px;
+                font-weight: 400;
+                color: $gray;
+                margin-bottom: 2px;
+            }
+
+            > .data {
+                margin: 0;
+                font-size: 12px;
+                font-weight: 500;
+                color: $gray-d;
+            }
+
+        }
+
+        > hr {
+            height: 30px;
+            border: none;
+            border-left: 2px solid $gray-l;
+            margin: 0;
+        }
+
+    }
+
+
+
+}

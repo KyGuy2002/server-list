@@ -1,0 +1,31 @@
+$white: white;
+$white-d: #e2e2e2;
+
+$gray-l: lightgray;
+$gray: gray;
+$gray-d: rgb(71, 71, 71);
+
+$black-l: rgb(24, 24, 24);
+$black: black;
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html,
+html > body,
+html > body > div.root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: auto;
+    font-family: 'Prompt', sans-serif;
+    font-weight: 500;
+    background-color: $white-d;
+}
+
+
+section.list {
+    margin: 10px auto;
+    margin-bottom: 35px;
+    padding: 0;
+    width: 70%;
+}

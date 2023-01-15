@@ -1,18 +1,21 @@
 @import "./global.scss";
 
 
-header {
+footer {
+  position: absolute;
+  bottom: 0;
+
   width: 100vw;
   height: 40px;
   display: flex;
-  background-color: $black;
+  background-color: $black-l;
   padding: 0 10px;
   box-sizing: border-box;
 
   h1 {
+    font-weight: 500;
     color: $white;
     font-size: 20px;
     margin: auto 0;
   }
-
 }

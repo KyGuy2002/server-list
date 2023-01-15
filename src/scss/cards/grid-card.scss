@@ -1,0 +1,67 @@
+@import "../global/global.scss";
+@import "./card.scss";
+@import "../sections/card-section.scss";
+
+
+.grid-card-section {
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $gap;
+    }
+}
+
+
+.grid-card {
+    padding: 18px;
+    padding-bottom: 12px;
+
+
+    $img-height: 150px;
+    $gradient-start: 50px;
+
+
+
+    > .gradient {
+        width: 100%;
+        height: $img-height - $gradient-start;
+        top: $gradient-start;
+        left: 0;
+        background: linear-gradient(transparent, $white);
+    }
+
+    > .banner-img {
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: $img-height;
+    }
+
+
+
+    > .title-container {
+        margin-top: $img-height - 60;
+    }
+
+
+
+    .body-text {
+        margin-top: 15px;
+        height: 90px;
+    }
+
+
+
+    .stats-container {
+        margin-top: 10px;
+    }
+
+
+    .tag-container {
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+
+
+
+}
