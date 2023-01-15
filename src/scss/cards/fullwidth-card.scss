@@ -1,13 +1,12 @@
 @use "../global/global.scss";
 @use "./card.scss";
-@use "../sections/card-section.scss";
 
 
 .fullwidth-card-section {
     .cards {
         display: flex;
         flex-direction: column;
-        gap: card-section.$gap;
+        gap: card.$gap;
     }
 }
 

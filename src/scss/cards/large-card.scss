@@ -1,0 +1,110 @@
+@use "../global/global.scss";
+@use "./card.scss";
+
+
+.large-card-section {
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: card.$gap;
+    }
+}
+
+
+.large-card {
+    display: flex;
+    height: 250px;
+    gap: 20px;
+
+
+    $left-width-percent: 75;
+
+    > * {
+        padding: 13px 18px;
+    }
+
+
+    > .leftImageColumn {
+        flex-grow: $left-width-percent;
+        flex-basis: 0; // Ignore item size when spacing
+        position: relative;
+
+
+        > .bottom-gradient {
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            height: 100px;
+            background: linear-gradient(transparent, global.$white, global.$white);
+        }
+    
+        > .right-gradient {
+            height: 100%;
+            top: 0;
+            right: 0;
+            width: 200px;
+            background: linear-gradient(to right, transparent, global.$white);
+        }
+    
+        > .banner-img {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+    
+
+        > .title-tags-flex {
+            display: flex;
+            align-items: flex-end; // Bottom
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            bottom: 13px;
+
+
+            > .tag-container {
+                justify-content: flex-end;
+            }
+        
+        
+            > .title-container {
+                > .text {
+                    > span {
+                        color: global.$black-l !important;
+                    }
+        
+                }
+            }
+        }
+
+
+    }
+
+
+
+    > .rightTextColumn {
+        flex-grow: 100 - $left-width-percent;
+        flex-basis: 0; // Ignore item size when spacings
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    
+        > div {
+            h1 {
+                margin: 5px 0;
+            }
+
+            > .body-text {
+                width: 100%;
+            }
+        }
+
+    }
+
+
+
+
+}
