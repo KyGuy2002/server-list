@@ -65,20 +65,16 @@ body {
         }
 
         &:hover {
-          background-color: lightgray;
-
-          &[disabled] {
-            animation: tilt-shaking 0.2s linear;
+          &:not([disabled]) {
+            background-color: lightgray;
           }
         }
 
         &:active {
-
           &:not([disabled]) {
             box-shadow: 0 2px #666;
             transform: translateY(4px);
           }
-
         }
 
       }

@@ -64,7 +64,7 @@ export default class Game extends React.Component {
 
                     <div className="buttons">
                         <button className="item" onClick={() => this.undo()} disabled={this.state.current_squares.toString() === this.state.last_squares.toString()}>Undo</button>
-                        <button className="item" onClick={() => this.restart()}>Restart</button>
+                        <button className="item" onClick={() => this.restart()} disabled={this.state.current_squares.toString() === Array(9).fill(null).toString()}>Restart</button>
                     </div>
                 </div>
 
