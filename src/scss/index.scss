@@ -1,0 +1,107 @@
+@import "./global.scss";
+
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+  background-color: $white;
+  box-sizing: border-box;
+}
+
+
+
+.game {
+  margin: auto;
+  background-color: $blue;
+  border-radius: 50px;
+  width: 50%;
+  height: 50%;
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 20px;
+
+  > h1 {
+    box-sizing: border-box;
+    color: $white;
+    font-size: 40px;
+    text-align: center;
+    margin: 15px 0;
+  }
+
+  > .main {
+    width: fit-content;
+    margin: 0 auto;
+
+    $gap: 8px;
+
+    .item {
+      text-align: center;
+      padding: 5px;
+      margin: $gap 0;
+      box-sizing: border-box;
+      background-color: $white;
+      border-radius: 15px;
+      width: 100%;
+      font-size: 16px;
+      color: $red;
+      font-weight: 600;
+    }
+
+    .item,
+    .square {
+      border: solid 3px $black;
+    }
+
+    > .buttons {
+      display: flex;
+      gap: $gap;
+
+      button {
+        box-shadow: 0 6px #999;
+        margin-bottom: 6px + $gap;
+        
+        &[disabled] {
+          border: solid 3px gray;
+          color: gray;
+        }
+
+        &:hover {
+          background-color: lightgray;
+
+          &[disabled] {
+            animation: tilt-shaking 0.2s linear;
+          }
+        }
+
+        &:active {
+
+          &:not([disabled]) {
+            box-shadow: 0 2px #666;
+            transform: translateY(4px);
+          }
+
+        }
+
+      }
+    }
+
+    > .board {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+
+      > .square {
+        border-radius: 10px;
+        color: transparent;
+        text-align: center;
+        aspect-ratio: 1;
+        width: 8vw;
+        color: $black;
+        font-size: 5vw;
+        font-weight: 600;
+      }
+    }
+
+  }
+}
