@@ -2,6 +2,7 @@ import React from 'react';
 import Tag from './Tag.js'
 import CardTitle from './CardTitle.js'
 import CardStats from './CardStats.js'
+import CardFeatures from './CardFeatures'
 import '../../scss/cards/fullwidth-card.scss';
 
 export default function FullwidthCard(props) {
@@ -21,7 +22,8 @@ export default function FullwidthCard(props) {
         ))}
       </div>
 
-      <p className='body-text'>{props.card.body}</p>
+      <CardFeatures/>
+      {/* <p className='body-text'>{props.card.body}</p> */}
       
     </div>
   );

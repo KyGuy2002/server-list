@@ -90,6 +90,33 @@
 
 
 
+    .features {
+        display: grid;
+        // grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+
+        > .feature {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+
+            > h1,
+            > i {
+                font-size: 10px;
+                color: $gray;
+            }
+            
+            > h1 {
+                margin: 0;
+                font-weight: 400;
+            }
+        }
+    }
+
+
+
     .tag-container {
         display: flex;
         flex-wrap: wrap;

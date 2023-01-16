@@ -2,6 +2,7 @@ import React from 'react';
 import Tag from './Tag.js'
 import CardTitle from './CardTitle.js'
 import CardStats from './CardStats.js'
+import CardFeatures from './CardFeatures'
 import '../../scss/cards/large-card.scss';
 
 export default function LargeCard(props) {
@@ -36,6 +37,7 @@ export default function LargeCard(props) {
         <div>
           <h1>{props.card.name}</h1>
           <p className='body-text'>{props.card.body}</p>
+          <CardFeatures/>
         </div>
         <CardStats card={props.card}/>
 

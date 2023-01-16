@@ -2,6 +2,7 @@ import React from 'react';
 import Tag from './Tag.js'
 import CardTitle from './CardTitle.js'
 import CardStats from './CardStats.js'
+import CardFeatures from './CardFeatures'
 import '../../scss/cards/grid-card.scss';
 
 export default function GridCard(props) {
@@ -13,6 +14,7 @@ export default function GridCard(props) {
 
       <CardTitle card={props.card}/>
 
+      <CardFeatures/>
       <p className='body-text'>{props.card.body}</p>
 
       <div className='tag-container'>
