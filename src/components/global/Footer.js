@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer>
 
-            <h1>Footer</h1>
+            <h2>Copyright © 2023 Minecraft Server List</h2>
 
         </footer>
     );

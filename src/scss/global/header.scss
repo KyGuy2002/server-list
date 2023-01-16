@@ -2,17 +2,139 @@
 
 
 header {
-  width: 100vw;
-  height: 40px;
   display: flex;
-  background-color: $black-l;
-  padding: 0 10px;
-  box-sizing: border-box;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 999;
+	background-color: $black-l;
+	height: 50px;
+	gap: 7px;
+	padding: 0 9px;
 
-  h1 {
-    font-weight: 500;
-    color: $white;
-    font-size: 20px;
-    margin: auto 0;
+
+
+  > .title-container {
+    display: flex;
+    align-items: center;
+    $gap: 10px;
+    gap: $gap;
+
+    > a {
+      display: flex;
+      align-items: center;
+      gap: $gap;
+
+      img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+  
+      h1 {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+
+    i.info-button {
+      color: $white-d;
+      font-size: 19px;
+      margin-left: 5px;
+      cursor: pointer;
+      transition-duration: color 0.4s;
+
+      &:hover {color: $white;}
+    }
+
   }
+
+
+
+  > .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 70px;
+    margin: 0 auto;
+
+    > a {
+      font-size: 17px;
+      color: $white;
+      font-weight: 600;
+    }
+  }
+
+
+
+  > button.discord {
+    @include rounded-button;
+    background-color: #5865F2;
+    &:hover {background-color: #6f79e9;}
+  }
+  
+
+  > button.github {
+    @include rounded-button;
+    background-color: #2b2626;
+    &:hover {background-color: #494242;}
+  }
+
+}
+
+
+
+.info-box[expanded=false] {display: none}
+.info-box[expanded=true] {
+	max-width: 500px;
+	position: absolute;
+	margin: 10px 0;
+	z-index: 998;
+	background-color: var(--header-black);
+	color: white;
+	display: block;
+	padding: 30px;
+	filter: drop-shadow(0 0 1rem rgb(12, 12, 12));
+}
+.info-box a {
+	color: var(--green);
+	text-decoration: none;
+}
+.info-box p {
+	margin: 4px 0;
+}
+.info-box h2 {
+	margin-top: 40px;
+	margin-bottom: 16px;
+}
+
+
+
+
+
+
+
+/* Tablet */
+@media only screen and (min-width: 550px) {
+	.info-box[expanded=true] {
+		margin: 25px 20px;
+	}
+}
+
+/* Desktop and Tablet */
+@media only screen and (min-width: 760px) {
+	.h-name {font-size: 20px;}
+	.h-discord {display: inline;}
+	.h-website {display: inline;}
+	.h-leaderboard-label {display: inline;}
+	.h-search-label {display: inline;}
+
+	.h-search-input:focus {
+		width: 363px;
+	}
+	.h-search-input {
+		top: 0;
+	}
 }

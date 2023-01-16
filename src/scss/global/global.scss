@@ -12,17 +12,37 @@ $gap: 25px;
 
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+@mixin font {
+    font-family: 'Prompt', sans-serif;
+}
+
+// Always keep scrollbars
+html {
+    overflow-y: scroll;
+}
+
 html,
 html > body,
-html > body > div.root {
+html > body > div#root {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    overflow: auto;
-    font-family: 'Prompt', sans-serif;
+    @include font;
     font-weight: 500;
     background-color: $white-d;
+}
+
+// For footer
+html > body > div#root {
+    padding-bottom: 50px;
+    position: relative;
     min-height: 100vh;
+    box-sizing: border-box;
+}
+
+
+a {
+    text-decoration: none;
+    color: $white;
 }
 
 
@@ -45,4 +65,21 @@ html > body > div.root {
     font-weight: 400;
 
     margin-bottom: 3px;
+}
+
+
+@mixin rounded-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: none;
+    color: white;
+    padding: 7px 11px;
+    text-align: center;
+    font-size: 15px;
+    @include font;
+    border-radius: 18px;
+    font-weight: 500;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
