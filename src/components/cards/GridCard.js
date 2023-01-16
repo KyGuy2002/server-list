@@ -9,7 +9,7 @@ export default function GridCard(props) {
     <div className='card grid-card'>
 
       <div className='gradient'></div>
-      <img className='banner-img' src={process.env.PUBLIC_URL + '/images/banners/' + props.card.id + ".png"} alt=''></img>
+      <div className='banner-img'><img src={process.env.PUBLIC_URL + '/images/banners/' + props.card.id + ".png"} alt={props.card.name + ' Banner'}></img></div>
 
       <CardTitle card={props.card}/>
 

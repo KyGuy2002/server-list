@@ -1,0 +1,7 @@
+@import "../global/global.scss";
+
+
+.checkbox-filter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}

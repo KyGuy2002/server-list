@@ -1,29 +1,8 @@
 @import "../global/global.scss";
 
 
-
-$gap: 25px;
-
-
-.section-label {
-    margin-top: 18px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  
-    color: $gray-d;
-    font-size: 11px;
-    font-weight: 400;
-
-    margin-bottom: 3px;
-}
-
-
 .card {
-    filter: drop-shadow(0px 0px 5px $gray-l);
-
-    background-color: $white;
-    border-radius: 13px;
+    @include card;
     position: relative;
     overflow: hidden;
 
@@ -35,8 +14,16 @@ $gap: 25px;
     }
 
     .banner-img {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
         position: absolute;
         z-index: -200;
+
+        > img {
+            min-width: 100%;
+            min-height: 100%;
+        }
     }
 
 
@@ -46,10 +33,16 @@ $gap: 25px;
         align-items: center;
         gap: 10px;
 
-        > img {
-            width: 54px;
-            aspect-ratio: 1;
+        > .image-container {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
             border-radius: 10px;
+
+            > img {
+                width: 54px;
+                aspect-ratio: 1;
+            }
         }
 
         > .text {
@@ -139,6 +132,14 @@ $gap: 25px;
             margin: 0;
         }
 
+    }
+
+
+
+    transition: transform linear 0.07s;
+    transform: perspective(-1px); // TODO fix blurry text and line by gradient
+    &:hover {
+        cursor: pointer;
     }
 
 

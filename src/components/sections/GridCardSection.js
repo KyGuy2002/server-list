@@ -10,7 +10,7 @@ export default function CardSection(props) {
 
       <div className='cards'>
         {props.cards.map(card => (
-          <GridCard key={card.name} card={card}/>
+          <GridCard key={card.id} card={card}/>
         ))}
       </div>
       

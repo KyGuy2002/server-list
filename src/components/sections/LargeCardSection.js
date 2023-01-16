@@ -10,7 +10,7 @@ export default function LargeCardSection(props) {
 
       <div className='cards'>
         {props.cards.map(card => (
-          <LargeCard key={card.name} card={card}/>
+          <LargeCard key={card.id} card={card}/>
         ))}
       </div>
       

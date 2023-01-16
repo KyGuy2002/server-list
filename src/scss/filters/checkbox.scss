@@ -1,0 +1,72 @@
+@import "../global/global.scss";
+
+
+/*
+Vanilla checkbox input is hidden, but clicking the label also interacts with the checkbox.
+Our custom checkbox checks the "checked" state of that hidden input, and alters its display based on that.
+*/
+
+// Label
+.checkbox-container {
+  color: $gray-d;
+  position: relative;
+  padding-left: 26px;
+  margin: 3px 0;
+  width: max-content;
+  cursor: pointer;
+  font-size: 13px;
+
+
+  // Hide default
+  > .vanilla-checkbox {
+    display: none;
+  }
+
+
+  // Hover (actually hovering the label, which is linked to the vanilla checkbox)
+  &:hover .vanilla-checkbox ~ .visible-checkbox {
+    background-color: $gray-l;
+    border: 2px solid $gray;
+  }
+
+
+  // Visible checkbox
+  > .visible-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: $white-d;
+    border: 2px solid $gray-l;
+    border-radius: 5px;
+
+
+    // Checkmark icon (hidden)
+    &:after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 3px;
+      height: 7px;
+
+      border: solid $gray-d;
+      border-width: 0 3px 3px 0;
+    
+      transition: all .2s;
+
+      display: none;
+      transform: scale(0) rotate(0);
+    }
+
+  }
+
+
+  // Checkmark icon (showing when checked)
+  > .vanilla-checkbox:checked ~ .visible-checkbox:after {
+    transform: scale(1) rotate(45deg);
+    display: block;
+  }
+
+}

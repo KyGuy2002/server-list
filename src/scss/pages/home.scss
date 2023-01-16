@@ -1,0 +1,21 @@
+@use "../global/global.scss";
+
+
+.home-grid {
+    display: flex;
+    margin: 0 global.$gap;
+    margin-bottom: global.$gap;
+    gap: global.$gap;
+
+
+    > .filters-section {
+        flex-grow: 20;
+        flex-basis: 0; // Ignore item size when spacings
+    }
+
+    > .list {
+        flex-grow: 80;
+        flex-basis: 0; // Ignore item size when spacings
+    }
+
+}
