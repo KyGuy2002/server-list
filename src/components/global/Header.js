@@ -4,37 +4,11 @@ import { Link } from "react-router-dom";
 import '../../scss/global/header.scss';
 
 
-
-class Toggle extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {isToggleOn: true};
-  
-      // This binding is necessary to make `this` work in the callback
-      this.handleClick = this.handleClick.bind(this);
-    }
-  
-    handleClick() {
-      this.setState(prevState => ({
-        isToggleOn: !prevState.isToggleOn
-      }));
-    }
-  
-    render() {
-      return (
-        <button onClick={this.handleClick}>
-          {this.state.isToggleOn ? 'ON' : 'OFF'}
-        </button>
-      );
-    }
-  }
-
-
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            mobileNavOpen: true
+            mobileNavOpen: false
         };
 
         // This binding is necessary to make `this` work in the callback
@@ -68,12 +42,12 @@ export default class Header extends React.Component {
                 </div>
 
 
-                <a className="discord" href="https://discord.com/" target="_blank">
+                <a className="discord" href="https://discord.com/" target="_blank" rel="noreferrer">
                     <h1>Discord</h1>
                     <i className="fa-brands fa-discord"></i>
                 </a>
 
-                <a className="github" href="https://github.com/" target="_blank">
+                <a className="github" href="https://github.com/" target="_blank" rel="noreferrer">
                     <h1>GitHub</h1>
                     <i className="fa-brands fa-github"></i>
                 </a>
