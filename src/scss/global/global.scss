@@ -19,6 +19,7 @@ html > body > div#root {
     @include font;
     font-weight: 500;
     background-color: $white-d;
+    font-size: 62.5% // Responsive Font Root
 }
 
 // For footer
@@ -61,15 +62,21 @@ a {
 @mixin rounded-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 7px;
     border: none;
     color: white;
     padding: 7px 11px;
     text-align: center;
-    font-size: 15px;
     @include font;
     border-radius: 18px;
-    font-weight: 500;
     transition-duration: 0.4s;
     cursor: pointer;
+
+    > i,
+    > h1 {
+        margin: 0;
+        font-size: clamp(1.3rem, 1.6vw, 1.5rem);
+        font-weight: 500;
+    }
 }

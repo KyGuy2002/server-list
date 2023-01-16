@@ -209,6 +209,66 @@ const sponsoredCardData = [
         online: true,
         players: 12
     },
+    {
+        name: "MCBlockBuilds",
+        ip: "mcblockbuilds.net",
+        id: "1",
+        accent: "#3a8c00",
+        gradient_accent: "#c4d7ff",
+        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
+        tags: [
+            "Theme Parks",
+            "Survival",
+            "Creative"
+        ],
+        online: true,
+        players: 16
+    },
+    {
+        name: "MCIlluminations",
+        ip: "mcilluminations.net",
+        id: "2",
+        accent: "#3a8c00",
+        gradient_accent: "#c4d7ff",
+        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
+        tags: [
+            "Theme Parks",
+            "Survival",
+            "Manhunt"
+        ],
+        online: false,
+        players: 3
+    },
+    {
+        name: "Sunset Parks",
+        ip: "sunsetparks.net",
+        id: "3",
+        accent: "#3a8c00",
+        gradient_accent: "#c4d7ff",
+        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
+        tags: [
+            "Theme Parks",
+            "Minigames",
+            "Creative"
+        ],
+        online: true,
+        players: 12
+    },
+    {
+        name: "Imagine Fun",
+        ip: "mcblockbuilds.net",
+        id: "4",
+        accent: "#3a8c00",
+        gradient_accent: "#c4d7ff",
+        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
+        tags: [
+            "Theme Parks",
+            "Survival",
+            "Creative"
+        ],
+        online: true,
+        players: 16
+    },
 ]
 
 

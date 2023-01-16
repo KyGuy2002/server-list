@@ -13,6 +13,10 @@ header {
 	padding: 0 9px;
 
 
+  $font-size: clamp(1.5rem, 1.8vw, 1.9rem);
+  $font-weight: 500;
+
+
 
   > .title-container {
     display: flex;
@@ -33,8 +37,8 @@ header {
   
       h1 {
         color: white;
-        font-size: 18px;
-        font-weight: 600;
+        font-size: $font-size;
+        font-weight: $font-weight;
         cursor: pointer;
       }
     }
@@ -42,7 +46,7 @@ header {
 
     i.info-button {
       color: $white-d;
-      font-size: 19px;
+      font-size: $font-size;
       margin-left: 5px;
       cursor: pointer;
       transition-duration: color 0.4s;
@@ -58,29 +62,97 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 70px;
+    gap: clamp(25px, 4vw, 70px);
     margin: 0 auto;
 
     > a {
-      font-size: 17px;
+      font-size: $font-size;
       color: $white;
-      font-weight: 600;
+      font-weight: $font-weight;
     }
   }
 
 
 
-  > button.discord {
+  > a.discord {
     @include rounded-button;
     background-color: #5865F2;
     &:hover {background-color: #6f79e9;}
   }
-  
 
-  > button.github {
+  > a.github {
     @include rounded-button;
     background-color: #2b2626;
     &:hover {background-color: #494242;}
   }
+
+  // Hide text (just show icon) on smaller screens
+  > a.github,
+  > a.discord {
+    @media (max-width: 720px) {
+      aspect-ratio: 1;
+      width: 35px;
+      box-sizing: border-box;
+      > h1 {
+        display: none;
+      }
+    }
+  }
+
+
+
+
+  // === Mobile Nav ===
+
+  $mobile-nav-max-width: 600px;
+
+  > .mobile-nav-button {
+    display: none;
+    margin: 0 3px;
+    font-size: 22px;
+    color: $white;
+    border: none;
+    background-color: transparent;
+    transition: transform, ease-in-out, 0.2s;
+  }
+
+  // Mobile nav - smaller screens
+  @media (max-width: $mobile-nav-max-width) {
+    > .mobile-nav-button {
+      display: block;
+    }
+
+    // Rotate when open
+    > .nav[mobile-nav-open='true'] ~ .mobile-nav-button {
+      transform: rotate(90deg);
+    }
+
+    // Move normal nav down below header and hide (shows on button click)
+    > .nav {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      height: 0;
+      opacity: 0;
+      background-color: rgba(34, 34, 34, 0.555);
+      border-bottom: 4px solid $black-l;
+
+      transition: height, opacity, ease-in-out 0.15s;
+
+      &[mobile-nav-open='true'] {
+        height: 35px;
+        opacity: 1;
+      }
+    }
+
+    // Push buttons to right of header
+    > a.discord {
+      margin-left: auto;
+    }
+
+  }
+
+  
 
 }
