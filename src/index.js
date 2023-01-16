@@ -6,7 +6,6 @@ import Header from './components/global/Header.js';
 import Footer from './components/global/Footer.js';
 import NotFound from './pages/NotFound.js';
 import HomePage from './pages/HomePage.js';
-import AboutPage from './pages/AboutPage.js';
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -15,7 +14,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Header/>
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
-                <Route path='/about' element={<AboutPage/>}/>
 
                 <Route path='*' element={<NotFound />}/>
             </Routes>

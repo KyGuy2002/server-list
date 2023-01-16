@@ -8,14 +8,19 @@
     gap: global.$gap;
 
 
-    > .filters-section {
-        flex-grow: 20;
-        flex-basis: 0; // Ignore item size when spacings
+    > .filters-column {
+        flex-grow: 15;
+        flex-basis: 0; // Ignore item size when spacing
     }
 
-    > .list {
-        flex-grow: 80;
-        flex-basis: 0; // Ignore item size when spacings
+    > .main-list-column {
+        flex-grow: 70;
+        flex-basis: 0; // Ignore item size when spacing
+    }
+
+    > .sponsored-list-column {
+        flex-grow: 15;
+        flex-basis: 0; // Ignore item size when spacing
     }
 
 }

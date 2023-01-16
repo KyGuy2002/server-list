@@ -1,14 +1,4 @@
-$white: white;
-$white-d: #e2e2e2;
-
-$gray-l: lightgray;
-$gray: gray;
-$gray-d: rgb(71, 71, 71);
-
-$black-l: rgb(24, 24, 24);
-$black: black;
-
-$gap: 25px;
+@import "./variables.scss";
 
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap');
 

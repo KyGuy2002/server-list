@@ -39,6 +39,7 @@ header {
       }
     }
 
+
     i.info-button {
       color: $white-d;
       font-size: 19px;
@@ -82,59 +83,4 @@ header {
     &:hover {background-color: #494242;}
   }
 
-}
-
-
-
-.info-box[expanded=false] {display: none}
-.info-box[expanded=true] {
-	max-width: 500px;
-	position: absolute;
-	margin: 10px 0;
-	z-index: 998;
-	background-color: var(--header-black);
-	color: white;
-	display: block;
-	padding: 30px;
-	filter: drop-shadow(0 0 1rem rgb(12, 12, 12));
-}
-.info-box a {
-	color: var(--green);
-	text-decoration: none;
-}
-.info-box p {
-	margin: 4px 0;
-}
-.info-box h2 {
-	margin-top: 40px;
-	margin-bottom: 16px;
-}
-
-
-
-
-
-
-
-/* Tablet */
-@media only screen and (min-width: 550px) {
-	.info-box[expanded=true] {
-		margin: 25px 20px;
-	}
-}
-
-/* Desktop and Tablet */
-@media only screen and (min-width: 760px) {
-	.h-name {font-size: 20px;}
-	.h-discord {display: inline;}
-	.h-website {display: inline;}
-	.h-leaderboard-label {display: inline;}
-	.h-search-label {display: inline;}
-
-	.h-search-input:focus {
-		width: 363px;
-	}
-	.h-search-input {
-		top: 0;
-	}
 }

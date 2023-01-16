@@ -8,7 +8,7 @@ export default function CardTitle(props) {
       <div className='text'>
         <h1>{props.card.name}</h1>
         <span>{props.card.ip} <i className="fa-solid fa-copy"></i></span>
-        <hr></hr>
+        <hr style={{borderTop: "3px solid "+props.card.accent}}></hr>
       </div>
     </div>
   );

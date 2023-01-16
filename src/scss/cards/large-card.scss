@@ -2,18 +2,10 @@
 @use "./card.scss";
 
 
-.large-card-section {
-    .cards {
-        display: flex;
-        flex-direction: column;
-        gap: card.$gap;
-    }
-}
-
 
 .large-card {
     display: flex;
-    height: 250px;
+    height: 300px;
     gap: 20px;
 
 

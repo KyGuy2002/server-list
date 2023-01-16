@@ -1,0 +1,21 @@
+$white: white;
+$white-d: #e2e2e2;
+
+$gray-l: lightgray;
+$gray: gray;
+$gray-d: rgb(71, 71, 71);
+
+$black-l: rgb(24, 24, 24);
+$black: black;
+
+$gap: 25px;
+
+:export {
+  white: $white;
+  whiteD: $white-d;
+  grayL: $gray-l;
+  gray: $gray;
+  grayD: $gray-d;
+  blackL: $black-l;
+  black: $black;
+}
