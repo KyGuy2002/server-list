@@ -1,5 +1,7 @@
 import React from 'react';
-import Tag from './Tag.js'
+import { Link } from "react-router-dom";
+
+import Tags from './Tags.js'
 import CardTitle from './CardTitle.js'
 import CardStats from './CardStats.js'
 import CardFeatures from './CardFeatures'
@@ -7,7 +9,7 @@ import '../../scss/cards/fullwidth-card.scss';
 
 export default function FullwidthCard(props) {
   return (
-    <div className='card fullwidth-card'>
+    <Link to={'/server/'+props.card.id} className='card fullwidth-card'>
 
       <div className='gradient'></div>
       <div className='banner-img'><img src={process.env.PUBLIC_URL + '/images/banners/' + props.card.id + ".png"} alt={props.card.name + ' Banner'}></img></div>
@@ -16,15 +18,11 @@ export default function FullwidthCard(props) {
 
       <CardStats card={props.card}/>
 
-      <div className='tag-container'>
-        {props.card.tags.map(tag => (
-          <Tag key={tag} name={tag}/>
-        ))}
-      </div>
+      <Tags card={props.card}/>
 
       <CardFeatures/>
       {/* <p className='body-text'>{props.card.body}</p> */}
       
-    </div>
+    </Link>
   );
 }

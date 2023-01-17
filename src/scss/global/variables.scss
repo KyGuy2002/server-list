@@ -8,7 +8,7 @@ $gray-d: rgb(71, 71, 71);
 $black-l: rgb(24, 24, 24);
 $black: black;
 
-$gap: 25px;
+$gap: clamp(12px, 3vw, 25px);
 
 :export {
   white: $white;

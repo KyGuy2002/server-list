@@ -1,5 +1,7 @@
 import React from 'react';
-import Tag from './Tag.js'
+import { Link } from "react-router-dom";
+
+import Tags from './Tags.js'
 import CardTitle from './CardTitle.js'
 import CardStats from './CardStats.js'
 import CardFeatures from './CardFeatures'
@@ -7,9 +9,7 @@ import '../../scss/cards/large-card.scss';
 
 export default function LargeCard(props) {
   return (
-    <div className='card large-card'>
-
-
+    <Link to={'/server/'+props.card.id} className='card large-card'>
 
       <div className='leftImageColumn'>
 
@@ -21,16 +21,10 @@ export default function LargeCard(props) {
         <div className='title-tags-flex'>
           <CardTitle card={props.card}/>
 
-          <div className='tag-container'>
-            {props.card.tags.map(tag => (
-              <Tag key={tag} name={tag}/>
-            ))}
-          </div>
+          <Tags card={props.card}/>
         </div>
 
       </div>
-
-
 
       <div className='rightTextColumn'>
 
@@ -43,8 +37,6 @@ export default function LargeCard(props) {
 
       </div>
       
-
-
-    </div>
+    </Link>
   );
 }

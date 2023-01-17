@@ -1,26 +1,24 @@
 @use "../global/global.scss";
 
 
-.home-grid {
-    display: flex;
-    margin: 0 global.$gap;
-    margin-bottom: global.$gap;
-    gap: global.$gap;
+$mobile-layout-max-width: 1000px; // TODO make global?
 
 
-    > .filters-column {
-        flex-grow: 15;
-        flex-basis: 0; // Ignore item size when spacing
-    }
+div#home-page {
+    @include global.page;
+    display: grid;
+    grid-template-columns: 15fr 70fr 15fr;
 
-    > .main-list-column {
-        flex-grow: 70;
-        flex-basis: 0; // Ignore item size when spacing
-    }
+    @media (max-width: $mobile-layout-max-width) {
+        grid-template-columns: 1fr;
 
-    > .sponsored-list-column {
-        flex-grow: 15;
-        flex-basis: 0; // Ignore item size when spacing
+        > .filters-column {
+            display: none;
+        }
+    
+        > .sponsored-list-column {
+            display: none;
+        }
     }
 
 }

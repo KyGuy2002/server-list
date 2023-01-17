@@ -9,7 +9,7 @@ export default function Filters() {
         <section className='filters'>
 
             <section>
-                <span className='label'><h1>Gamemodes</h1><i className="fa-solid fa-arrow-rotate-left"></i></span>
+                <h1>Gamemodes <i className="fa-solid fa-arrow-rotate-left"></i></h1>
                 <div className='checkbox-filter'>
                     <Checkbox label="Theme Parks"/>
                     <Checkbox label="Creative"/>
@@ -21,7 +21,7 @@ export default function Filters() {
             </section>
 
             <section>
-                <span className='label'><h1>Platform</h1><i className="fa-solid fa-arrow-rotate-left"></i></span>
+                <h1>Platform <i className="fa-solid fa-arrow-rotate-left"></i></h1>
                 <div className='checkbox-filter'>
                     <Checkbox label="Java"/>
                     <Checkbox label="Bedrock"/>

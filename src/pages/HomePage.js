@@ -13,50 +13,44 @@ import GridCardSection from '../components/sections/GridCardSection.js';
 
 export default function HomePage() {
     return (
-    <>
-        <div className='home-grid'>
+    <div id="home-page">
+        {/* Left Column */}
+        <section className='filters-column'>
+
+            {/* Filter Card */}
+            <span className="section-label">Filters <i className="fa-solid fa-circle-info"></i></span>
+            <Filters/>
+
+        </section>
 
 
-            {/* Left Column */}
-            <div className='filters-column'>
+        {/* Center Column */}
+        <section className='main-list-column'>
 
-                {/* Filter Card */}
-                <span className="section-label">Filters <i className="fa-solid fa-circle-info"></i></span>
-                <Filters/>
+            {/* Discovery Card */}
+            <span className="section-label">Discovery <i className="fa-solid fa-circle-info"></i></span>
+            <LargeCard key={discoveryCardData[0].id} card={discoveryCardData[0]}/>
 
-            </div>
+            {/* Link Cards Row */}
+            <span className="section-label">Filters & Search <i className="fa-solid fa-circle-info"></i></span>
+            <LinkCardSection cards={linkCards}/>
 
+            {/* Main Server List Card Grid */}
+            <span className="section-label">All Servers <i className="fa-solid fa-circle-info"></i></span>
+            <GridCardSection cards={allServersCardData}/>
 
-            {/* Center Column */}
-            <section className='main-list-column'>
-
-                {/* Discovery Card */}
-                <span className="section-label">Discovery <i className="fa-solid fa-circle-info"></i></span>
-                <LargeCard key={discoveryCardData[0].id} card={discoveryCardData[0]}/>
-
-                {/* Link Cards Row */}
-                <span className="section-label">Filters & Search <i className="fa-solid fa-circle-info"></i></span>
-                <LinkCardSection cards={linkCards}/>
-
-                {/* Main Server List Card Grid */}
-                <span className="section-label">All Servers <i className="fa-solid fa-circle-info"></i></span>
-                <GridCardSection cards={allServersCardData}/>
-
-            </section>
+        </section>
 
 
-            {/* Right Column */}
-            <section className='sponsored-list-column'>
+        {/* Right Column */}
+        <section className='sponsored-list-column'>
 
-                {/* Sponsored Cards */}
-                <span className="section-label">Sponsored <i className="fa-solid fa-circle-info"></i></span>
-                <GridCardSection cards={sponsoredCardData}/>
+            {/* Sponsored Cards */}
+            <span className="section-label">Sponsored <i className="fa-solid fa-circle-info"></i></span>
+            <GridCardSection cards={sponsoredCardData}/>
 
-            </section>
-
-
-        </div>
-    </>
+        </section>
+    </div>
     )
 }
 

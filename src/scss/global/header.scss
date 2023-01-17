@@ -112,6 +112,7 @@ header {
     font-size: 22px;
     color: $white;
     border: none;
+    box-sizing: border-box;
     background-color: transparent;
     transition: transform, ease-in-out, 0.2s;
   }

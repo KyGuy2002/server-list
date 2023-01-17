@@ -1,0 +1,12 @@
+import React from 'react';
+import '../../scss/wizard/filter-wizard-modal.scss';
+
+export default function FilterWizardModal() {
+    return (
+        <section className='filter-wizard-modal'>
+
+            
+
+        </section>
+    );
+}

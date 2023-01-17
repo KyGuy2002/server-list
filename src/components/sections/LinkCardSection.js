@@ -7,7 +7,7 @@ export default function LinkCardSection(props) {
     <section className='link-card-section'>
 
         {props.cards.map(card => (
-            <LinkCard key={card.id} card={card}/>
+            <LinkCard key={card.name} card={card}/>
         ))}
 
     </section>

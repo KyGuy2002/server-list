@@ -1,0 +1,43 @@
+@use "../global/global.scss";
+
+
+div#server-listing-page {
+    @include global.page-plus-top;
+
+    > .main-content-container {
+        display: flex;
+        padding-top: 0 !important;
+        gap: global.$gap;
+
+        > .server-stats-sidebar {
+            flex-grow: 20;
+            flex-basis: 0;
+        }
+
+        > .server-description-column {
+            flex-grow: 80;
+            flex-basis: 0;
+
+            > .card > p {
+                font-size: 12px;
+                color: global.$gray;
+                font-weight: 400;
+                margin: 0;
+            }
+        }
+
+    }
+
+    // @media (max-width: $mobile-layout-max-width) {
+    //     grid-template-columns: 1fr;
+
+    //     > .filters-column {
+    //         display: none;
+    //     }
+    
+    //     > .sponsored-list-column {
+    //         display: none;
+    //     }
+    // }
+
+}
