@@ -21,7 +21,7 @@ export default function LargeCard(props) {
         <div className='title-tags-flex'>
           <CardTitle card={props.card}/>
 
-          <Tags card={props.card}/>
+          {/* <Tags card={props.card}/> */}
         </div>
 
       </div>
@@ -31,7 +31,7 @@ export default function LargeCard(props) {
         <div>
           <h1>{props.card.name}</h1>
           <p className='body-text'>{props.card.body}</p>
-          <CardFeatures/>
+          <CardFeatures features_categories={props.card.features_categories}/>
         </div>
         <CardStats card={props.card}/>
 

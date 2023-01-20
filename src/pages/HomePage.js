@@ -1,4 +1,5 @@
 import React from 'react';
+import useFetch from "react-fetch-hook";
 
 import '../scss/pages/home.scss';
 
@@ -10,47 +11,66 @@ import LinkCardSection from '../components/sections/LinkCardSection.js';
 import GridCardSection from '../components/sections/GridCardSection.js';
 
 
-
 export default function HomePage() {
+
+    // const error = undefined;
+    // const data = undefined;
+
+    const { isLoading, data, error } = useFetch(
+        "/api/servers"
+    );
+
     return (
-    <div id="home-page">
-        {/* Left Column */}
-        <section className='filters-column'>
+        <>
+            <div id="home-page">
 
-            {/* Filter Card */}
-            <span className="section-label">Filters <i className="fa-solid fa-circle-info"></i></span>
-            <Filters/>
-
-        </section>
-
-
-        {/* Center Column */}
-        <section className='main-list-column'>
-
-            {/* Discovery Card */}
-            <span className="section-label">Discovery <i className="fa-solid fa-circle-info"></i></span>
-            <LargeCard key={discoveryCardData[0].id} card={discoveryCardData[0]}/>
-
-            {/* Link Cards Row */}
-            <span className="section-label">Filters & Search <i className="fa-solid fa-circle-info"></i></span>
-            <LinkCardSection cards={linkCards}/>
-
-            {/* Main Server List Card Grid */}
-            <span className="section-label">All Servers <i className="fa-solid fa-circle-info"></i></span>
-            <GridCardSection cards={allServersCardData}/>
-
-        </section>
+                {error && 
+                    <div className='error'>
+                        <h1>An Error Has Occored</h1>
+                        <h2>Status Code: {error.status}</h2>
+                        <h3>Please reload this page and try again.  If the issue persists, contact support in our <a href='https://discord.com'>Discord</a>.</h3>
+                    </div>
+                }
 
 
-        {/* Right Column */}
-        <section className='sponsored-list-column'>
+                {/* Left Column */}
+                <section className='filters-column'>
 
-            {/* Sponsored Cards */}
-            <span className="section-label">Sponsored <i className="fa-solid fa-circle-info"></i></span>
-            <GridCardSection cards={sponsoredCardData}/>
+                    {/* Filter Card */}
+                    <span className="section-label">Filters <i className="fa-solid fa-circle-info"></i></span>
+                    <Filters/>
 
-        </section>
-    </div>
+                </section>
+
+
+                {/* Center Column */}
+                <section className='main-list-column'>
+
+                    {/* Discovery Card */}
+                    <span className="section-label">Discovery <i className="fa-solid fa-circle-info"></i></span>
+                    {/* <LargeCard card={newData['discovery_card']}/> */}
+
+                    {/* Link Cards Row */}
+                    <span className="section-label">Filters & Search <i className="fa-solid fa-circle-info"></i></span>
+                    <LinkCardSection cards={linkCards}/>
+
+                    {/* Main Server List Card Grid */}
+                    <span className="section-label">All Servers <i className="fa-solid fa-circle-info"></i></span>
+                    <GridCardSection cards={data}/>
+
+                </section>
+
+
+                {/* Right Column */}
+                <section className='sponsored-list-column'>
+
+                    {/* Sponsored Cards */}
+                    <span className="section-label">Sponsored <i className="fa-solid fa-circle-info"></i></span>
+                    <GridCardSection cards={data}/>
+
+                </section>
+            </div>
+        </>
     )
 }
 
@@ -66,219 +86,4 @@ const linkCards = [
         name: "All Filters",
         description: "Jump to filters",
     },
-]
-
-const allServersCardData = [
-    {
-        name: "MCBlockBuilds",
-        ip: "mcblockbuilds.net",
-        id: "1",
-        accent: "#3a8c00",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Creative"
-        ],
-        online: true,
-        players: 16
-    },
-    {
-        name: "MCIlluminations",
-        ip: "mcilluminations.net",
-        id: "2",
-        accent: "#3a8c00",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Manhunt"
-        ],
-        online: false,
-        players: 3
-    },
-    {
-        name: "Sunset Parks",
-        ip: "sunsetparks.net",
-        id: "3",
-        accent: "#3a8c00",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Minigames",
-            "Creative"
-        ],
-        online: true,
-        players: 12
-    },
-    {
-        name: "Imagine Fun",
-        ip: "mcblockbuilds.net",
-        id: "4",
-        accent: "#3a8c00",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Creative"
-        ],
-        online: true,
-        players: 16
-    },
-    {
-        name: "MCParks",
-        ip: "mcilluminations.net",
-        id: "5",
-        accent: "#3a8c00",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Manhunt"
-        ],
-        online: false,
-        players: 3
-    },
-    {
-        name: "Origin Realms",
-        ip: "sunsetparks.net",
-        id: "6",
-        accent: "#3a8c00",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Minigames",
-            "Creative"
-        ],
-        online: true,
-        players: 12
-    },
-    {
-        name: "Ubuntu",
-        ip: "mcblockbuilds.net",
-        id: "7",
-        accent: "#3a8c00",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Creative"
-        ],
-        online: true,
-        players: 16
-    }
-]
-
-
-const sponsoredCardData = [
-    {
-        name: "MCParks",
-        ip: "mcblockbuilds.net",
-        id: "5",
-        accent: "#3a8c00",
-        gradient_accent: "#c9e3a8",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Creative",
-            "Magic Kingdom",
-            "Universal Orlando"
-        ],
-        online: true,
-        players: 16
-    },
-    {
-        name: "Origin Realms",
-        ip: "sunsetparks.net",
-        id: "6",
-        accent: "#424242",
-        gradient_accent: "#c4d7ff",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Minigames",
-            "Creative"
-        ],
-        online: true,
-        players: 12
-    },
-    {
-        name: "MCBlockBuilds",
-        ip: "mcblockbuilds.net",
-        id: "1",
-        accent: "#3a8c00",
-        gradient_accent: "#c4d7ff",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Creative"
-        ],
-        online: true,
-        players: 16
-    },
-    {
-        name: "MCIlluminations",
-        ip: "mcilluminations.net",
-        id: "2",
-        accent: "#3a8c00",
-        gradient_accent: "#c4d7ff",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Manhunt"
-        ],
-        online: false,
-        players: 3
-    },
-    {
-        name: "Sunset Parks",
-        ip: "sunsetparks.net",
-        id: "3",
-        accent: "#3a8c00",
-        gradient_accent: "#c4d7ff",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Minigames",
-            "Creative"
-        ],
-        online: true,
-        players: 12
-    },
-    {
-        name: "Imagine Fun",
-        ip: "mcblockbuilds.net",
-        id: "4",
-        accent: "#3a8c00",
-        gradient_accent: "#c4d7ff",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Creative"
-        ],
-        online: true,
-        players: 16
-    },
-]
-
-
-const discoveryCardData = [
-    {
-        name: "Imagine Fun",
-        ip: "mcblockbuilds.net",
-        id: "4",
-        accent: "#3a8c00",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
-        tags: [
-            "Theme Parks",
-            "Survival",
-            "Creative"
-        ],
-        online: true,
-        players: 16
-    }
 ]

@@ -18,9 +18,9 @@ export default function FullwidthCard(props) {
 
       <CardStats card={props.card}/>
 
-      <Tags card={props.card}/>
+      {/* <Tags card={props.card}/> */}
 
-      <CardFeatures/>
+      <CardFeatures features_categories={props.card.features_categories}/>
       {/* <p className='body-text'>{props.card.body}</p> */}
       
     </Link>
