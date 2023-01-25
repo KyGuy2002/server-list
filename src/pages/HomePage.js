@@ -16,9 +16,10 @@ export default function HomePage() {
     // const error = undefined;
     // const data = undefined;
 
-    const { isLoading, data, error } = useFetch(
+    const { data, error } = useFetch(
         "/api/servers"
     );
+
 
     return (
         <>
@@ -48,7 +49,7 @@ export default function HomePage() {
 
                     {/* Discovery Card */}
                     <span className="section-label">Discovery <i className="fa-solid fa-circle-info"></i></span>
-                    {/* <LargeCard card={newData['discovery_card']}/> */}
+                    <LargeCard card={(data ? data.discovery_card : undefined)}/>
 
                     {/* Link Cards Row */}
                     <span className="section-label">Filters & Search <i className="fa-solid fa-circle-info"></i></span>
@@ -56,7 +57,7 @@ export default function HomePage() {
 
                     {/* Main Server List Card Grid */}
                     <span className="section-label">All Servers <i className="fa-solid fa-circle-info"></i></span>
-                    <GridCardSection cards={data}/>
+                    <GridCardSection cards={(data ? data.server_cards : undefined)}/>
 
                 </section>
 
@@ -66,7 +67,7 @@ export default function HomePage() {
 
                     {/* Sponsored Cards */}
                     <span className="section-label">Sponsored <i className="fa-solid fa-circle-info"></i></span>
-                    <GridCardSection cards={data}/>
+                    <GridCardSection cards={(data ? data.sponsored_cards : undefined)}/>
 
                 </section>
             </div>

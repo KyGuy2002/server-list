@@ -13,7 +13,7 @@ export default function LinkCard(props) {
         <h2>{props.card.description}</h2>
       </div>
 
-      <i className="fa-solid fa-chevron-right"></i>
+      <i className={props.card.icon_classes || "fa-solid fa-chevron-right"}></i>
       
     </div>
   );

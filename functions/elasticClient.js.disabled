@@ -1,0 +1,10 @@
+import { Client } from "@elastic/elasticsearch";
+
+
+export default elasticClient = new Client({
+  node: 'https://localhost:5601',
+  auth: {
+    username: 'elastic',
+    password: 'a-CJ0GZfAAY4QPyNsde2'
+  }
+})

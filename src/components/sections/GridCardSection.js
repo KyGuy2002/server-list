@@ -8,7 +8,7 @@ export default function CardSection(props) {
     <section className='grid-card-section'>
 
       <div className='cards'>
-        {(props.cards && props.cards.server_cards.map(card => (
+        {(props.cards && props.cards.map(card => (
           <GridCard key={card.id} card={card}/>
         )))
         ||

@@ -1,0 +1,13 @@
+const elasticClient = require("../elasticClient");
+
+
+export async function onRequestGet({ request, env }) {
+
+    const createIndex = async (indexName) => {
+        await elasticClient.indices.create({ index: indexName });
+        console.log("Index created");
+    };
+
+    createIndex("posts");
+
+}

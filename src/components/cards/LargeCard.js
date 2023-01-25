@@ -1,42 +1,72 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import Tags from './Tags.js'
 import CardTitle from './CardTitle.js'
 import CardStats from './CardStats.js'
 import CardFeatures from './CardFeatures'
 import '../../scss/cards/large-card.scss';
+import Skeleton from 'react-loading-skeleton';
 
 export default function LargeCard(props) {
-  return (
-    <Link to={'/server/'+props.card.id} className='card large-card'>
-
-      <div className='leftImageColumn'>
-
-        <div className='gradient bottom-gradient'></div>
-        <div className='gradient right-gradient'></div>
-        <div className='banner-img'><img src={process.env.PUBLIC_URL + '/images/banners/' + props.card.id + ".png"} alt={props.card.name + ' Banner'}></img></div>
-
-
-        <div className='title-tags-flex'>
-          <CardTitle card={props.card}/>
-
-          {/* <Tags card={props.card}/> */}
+  if (props.card) {
+    return (
+      <Link to={'/server/'+props.card.id} className='card large-card'>
+  
+        <div className='leftImageColumn'>
+  
+          <div className='gradient bottom-gradient'></div>
+          <div className='gradient right-gradient'></div>
+          <img className='banner-img' src={process.env.PUBLIC_URL + '/images/banners/' + props.card.id + ".png"} alt={props.card.name + ' Banner'}></img>
+  
+  
+          <div className='title-tags-flex'>
+            <CardTitle card={props.card}/>
+          </div>
+  
         </div>
-
-      </div>
-
-      <div className='rightTextColumn'>
-
-        <div>
-          <h1>{props.card.name}</h1>
-          <p className='body-text'>{props.card.body}</p>
-          <CardFeatures features_categories={props.card.features_categories}/>
+  
+        <div className='rightTextColumn'>
+  
+          <div>
+            <h1>{props.card.name}</h1>
+            <CardFeatures card={props.card}/>
+          </div>
+          <CardStats card={props.card}/>
+  
         </div>
-        <CardStats card={props.card}/>
+        
+      </Link>
+    );
+  }
 
-      </div>
-      
-    </Link>
-  );
+  else {
+    return (
+      <Link className='card large-card'>
+  
+        <div className='leftImageColumn'>
+  
+          <div className='gradient bottom-gradient'></div>
+          <div className='gradient right-gradient'></div>
+          <div className='banner-img'><Skeleton style={{transform: "translateY(-1px)"}}/></div>
+  
+  
+          <div className='title-tags-flex'>
+            <CardTitle card={props.card}/>
+          </div>
+  
+        </div>
+  
+        <div className='rightTextColumn'>
+  
+          <div>
+            <h1><Skeleton/></h1>
+            <CardFeatures card={props.card}/>
+          </div>
+          <CardStats card={props.card}/>
+  
+        </div>
+        
+      </Link>
+    );
+  }
 }

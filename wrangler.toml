@@ -1,7 +1,0 @@
-name = "server-list"
-compatibility_date = "2023-01-19"
-
-[[ d1_databases ]]
-binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "server-list"
-database_id = "26c9f5c1-7f70-4d4d-b909-48efbd53063a"

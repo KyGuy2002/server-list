@@ -14,7 +14,7 @@
     $left-width-percent: 75;
 
     > * {
-        padding: 13px 18px;
+        padding: 20px;
     }
 
 
@@ -40,7 +40,7 @@
             background: linear-gradient(to right, transparent, global.$white);
         }
 
-        > .banner-img {
+        .banner-img {
             top: 0;
             left: 0;
             height: 100%;

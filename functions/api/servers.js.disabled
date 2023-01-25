@@ -300,7 +300,7 @@ const sponsoredCardData = [
 const discoveryCardData = {
     name: "Imagine Fun",
     ip: "mcblockbuilds.net",
-    id: "4",
+    id: "3",
     accent: "#3a8c00",
     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus commodo sem eget ultricies. Donec scelerisque et nisl ac ultricies.",
     features_categories: [

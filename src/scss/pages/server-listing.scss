@@ -3,6 +3,11 @@
 
 div#server-listing-page {
     @include global.page-plus-top;
+    display: grid;
+
+    .link-card > i {
+        font-size: 17px !important;
+    }
 
     > .main-content-container {
         display: flex;
@@ -10,6 +15,40 @@ div#server-listing-page {
         gap: global.$gap;
 
         > .server-stats-sidebar {
+            flex-grow: 20;
+            flex-basis: 0;
+
+            > .card {
+
+
+                > table {
+                    font-size: 13px;
+                    font-weight: 500;
+    
+                    > tbody {
+    
+                        > tr {
+    
+                            > td {
+                                color: global.$black;
+    
+    
+                                &:first-child {
+                                    font-size: 14px;
+                                    color: global.$gray;
+                                    padding-right: 10px;
+                                }
+    
+                            }
+                        }
+    
+                    }
+    
+                }
+            }
+        }
+
+        > .server-features-sidebar {
             flex-grow: 20;
             flex-basis: 0;
         }
@@ -27,17 +66,5 @@ div#server-listing-page {
         }
 
     }
-
-    // @media (max-width: $mobile-layout-max-width) {
-    //     grid-template-columns: 1fr;
-
-    //     > .filters-column {
-    //         display: none;
-    //     }
-    
-    //     > .sponsored-list-column {
-    //         display: none;
-    //     }
-    // }
 
 }
