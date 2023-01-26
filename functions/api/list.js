@@ -3,10 +3,21 @@ import planetScaleClient from '../planetScaleClient'
 
 export async function onRequestGet({ request, env }) {
 
-    const result = await planetScaleClient(env).execute('SELECT * FROM es_table');
-    const json = JSON.stringify(result)
+    const result = await planetScaleClient(env).execute('SELECT * FROM Servers');
 
-    return new Response(json, {
+    const rowsJson = result.rows;
+
+    rowsJson.map(server => {
+      server.features_categories = JSON.parse(server.features_categories);
+    })
+
+    const resultJson = JSON.stringify({
+      discovery_card: rowsJson[0],
+      server_cards: rowsJson,
+      sponsored_cards: rowsJson,
+    })
+
+    return new Response(resultJson, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'

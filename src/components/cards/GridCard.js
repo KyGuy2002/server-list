@@ -12,10 +12,10 @@ import Skeleton from 'react-loading-skeleton';
 export default function GridCard(props) {
   if (props.card) {
     return (
-      <Link to={'/server/'+props.card.id} className='card grid-card' style={{background: "linear-gradient(to top, "+variables.white+", "+(props.card.gradient_accent || variables.white)+" "+imgHeight.imgHeight+")"}}>
+      <Link to={'/server/'+props.card.id} className='card grid-card' style={{background: "linear-gradient(to top, "+variables.white+", "+(props.card.gradient_accent ? "#"+props.card.gradient_accent : variables.white)+" "+imgHeight.imgHeight+")"}}>
   
-        <div className='gradient' style={{background: "linear-gradient(transparent, "+(props.card.gradient_accent || variables.white)+")"}}></div>
-        <img className='banner-img' src={process.env.PUBLIC_URL + '/images/banners/' + props.card.id + ".png"} alt={props.card.name + ' Banner'}></img>
+        <div className='gradient' style={{background: "linear-gradient(transparent, "+(props.card.gradient_accent ? "#"+props.card.gradient_accent : variables.white)+")"}}></div>
+        <img className='banner-img' src={process.env.PUBLIC_URL + '/images/banners/' + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img>
   
         <CardTitle card={props.card}/>
   

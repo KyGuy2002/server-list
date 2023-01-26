@@ -1,13 +1,16 @@
 import planetScaleClient from '../planetScaleClient'
 
 
-export async function onRequestPut({ request, env }) {
+export async function onRequestPost({ request, env }) {
 
-    const url = new URL(request.url);
-    const name = url.searchParams.get("name");
-    const id = url.searchParams.get("id");
+    // const url = new URL(request.url);
+    const server_uuid = crypto.randomUUID();
 
-    const result = await planetScaleClient(env).execute('INSERT INTO es_table (id, client_name) VALUES (?, ?)', [id, name]);
+    const requestJson = await request.json();
+
+    const result = await planetScaleClient(env).execute(
+      'INSERT INTO Servers (server_uuid, name, ip, full_description, accent, features_categories) VALUES (?, ?, ?, ?, ?, ?);',
+      [server_uuid, requestJson.name, requestJson.ip, requestJson.full_description, requestJson.accent, JSON.stringify(requestJson.features_categories)]);
     const json = JSON.stringify(result)
 
     return new Response(json, {

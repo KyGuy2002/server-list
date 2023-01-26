@@ -13,7 +13,7 @@ export default function CardStats(props) {
         <hr></hr>
         <div>
           <p className='label'>Players</p>
-          <p className='data'>{props.card.players}</p>
+          <p className='data'>{props.card.players || 0}</p>
         </div>
       </div>
     );

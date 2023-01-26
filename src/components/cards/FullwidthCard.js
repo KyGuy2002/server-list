@@ -12,7 +12,7 @@ export default function FullwidthCard(props) {
     <Link to={'/server/'+props.card.id} className='card fullwidth-card'>
 
       <div className='gradient'></div>
-      <div className='banner-img'><img src={process.env.PUBLIC_URL + '/images/banners/' + props.card.id + ".png"} alt={props.card.name + ' Banner'}></img></div>
+      <div className='banner-img'><img src={process.env.PUBLIC_URL + '/images/banners/' + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img></div>
 
       <CardTitle card={props.card}/>
 

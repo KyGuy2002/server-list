@@ -17,7 +17,7 @@ export default function HomePage() {
     // const data = undefined;
 
     const { data, error } = useFetch(
-        "/api/servers"
+        "/api/list"
     );
 
 

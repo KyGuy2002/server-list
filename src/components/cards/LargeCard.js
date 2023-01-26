@@ -16,7 +16,7 @@ export default function LargeCard(props) {
   
           <div className='gradient bottom-gradient'></div>
           <div className='gradient right-gradient'></div>
-          <img className='banner-img' src={process.env.PUBLIC_URL + '/images/banners/' + props.card.id + ".png"} alt={props.card.name + ' Banner'}></img>
+          <img className='banner-img' src={process.env.PUBLIC_URL + '/images/banners/' + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img>
   
   
           <div className='title-tags-flex'>
