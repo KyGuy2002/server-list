@@ -26,11 +26,13 @@ export default function HomePage() {
             <div id="home-page">
 
                 {error && 
-                    <div className='error'>
-                        <h1>An Error Has Occored</h1>
-                        <h2>Status Code: {error.status}</h2>
-                        <h3>Please reload this page and try again.  If the issue persists, contact support in our <a href='https://discord.com'>Discord</a>.</h3>
-                    </div>
+                    <section className='modal'>
+                        <section className='error'>
+                            <h1>An Error Has Occored</h1>
+                            <h2>Status Code: {error.status}</h2>
+                            <h3>Please reload this page and try again.  If the issue persists, contact support in our <a href='https://discord.com'>Discord</a>.</h3>
+                        </section>
+                    </section>
                 }
 
 
