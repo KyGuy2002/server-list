@@ -9,8 +9,8 @@ export async function onRequestPost({ request, env }) {
     const requestJson = await request.json();
 
     const result = await planetScaleClient(env).execute(
-      'INSERT INTO Servers (server_uuid, name, ip, full_description, accent, features_categories) VALUES (?, ?, ?, ?, ?, ?);',
-      [server_uuid, requestJson.name, requestJson.ip, requestJson.full_description, requestJson.accent, JSON.stringify(requestJson.features_categories)]);
+      'INSERT INTO Servers (server_uuid, name, ip, full_description, accent, features_categories, online, players) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
+      [server_uuid, requestJson.name, requestJson.ip, requestJson.full_description, requestJson.accent, JSON.stringify(requestJson.features_categories), requestJson.online, requestJson.players]);
     const json = JSON.stringify(result)
 
     return new Response(json, {
