@@ -10,7 +10,7 @@ export default function CardTitle(props) {
   if (props.card) {
     return (
       <div className='title-container'>
-        <div className='image-container'><img src={process.env.PUBLIC_URL + '/images/logos/' + props.card.server_uuid + ".png"} alt={props.card.name + ' Logo'}></img></div>
+        <div className='image-container'><img src={"https://res.cloudinary.com/drimvo8rp/image/upload/v1674796880/server-logo/" + props.card.server_uuid + ".png"} alt={props.card.name + ' Logo'}></img></div>
         <div className='text'>
           <h1>{props.card.name}</h1>
           <span>{props.card.ip} <i className="fa-solid fa-copy"></i></span>

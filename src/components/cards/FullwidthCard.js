@@ -9,10 +9,10 @@ import '../../scss/cards/fullwidth-card.scss';
 
 export default function FullwidthCard(props) {
   return (
-    <Link to={'/server/'+props.card.id} className='card fullwidth-card'>
+    <Link to={'/server/'+props.card.server_uuid} className='card fullwidth-card'>
 
       <div className='gradient'></div>
-      <div className='banner-img'><img src={process.env.PUBLIC_URL + '/images/banners/' + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img></div>
+      <div className='banner-img'><img src={"https://res.cloudinary.com/drimvo8rp/image/upload/v1674796880/server-banner/" + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img></div>
 
       <CardTitle card={props.card}/>
 

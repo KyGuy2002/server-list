@@ -10,13 +10,13 @@ import Skeleton from 'react-loading-skeleton';
 export default function LargeCard(props) {
   if (props.card) {
     return (
-      <Link to={'/server/'+props.card.id} className='card large-card'>
+      <Link to={'/server/'+props.card.server_uuid} className='card large-card'>
   
         <div className='leftImageColumn'>
   
           <div className='gradient bottom-gradient'></div>
           <div className='gradient right-gradient'></div>
-          <img className='banner-img' src={process.env.PUBLIC_URL + '/images/banners/' + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img>
+          <img className='banner-img' src={"https://res.cloudinary.com/drimvo8rp/image/upload/v1674796880/server-banner/" + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img>
   
   
           <div className='title-tags-flex'>

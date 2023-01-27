@@ -1,0 +1,54 @@
+@use "./global.scss";
+
+
+section.walkthrough {
+    width: clamp(300px, 40vw, 800px);
+    background-color: white;
+
+    $padding-sides: 50px;
+    padding: 25px $padding-sides;
+    background-color: white;
+
+    text-align: center;
+
+    h1 {
+        font-size: 40px;
+        margin: 6px;
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: 20px;
+
+        color: global.$gray-d;
+        font-weight: 500;
+    }
+
+    .buttons {
+        display: flex;
+        gap: $padding-sides;
+        align-items: center;
+        justify-content: center;
+
+        > button {
+            flex: 1 1 0;
+            max-width: 300px;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 15px;
+            
+            &.blue {
+                background-color: global.$blue;
+                color: white;
+            }
+
+            &.gray {
+                background-color: global.$white-d;
+                color: global.$gray-d;
+            }
+
+        }
+    }
+}

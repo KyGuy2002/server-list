@@ -6,19 +6,38 @@ import '../scss/cards/fullwidth-card.scss';
 
 import '../scss/pages/server-listing.scss';
 
+import ErrorModal from '../components/global/ErrorModal';
+
+import { useParams } from 'react-router-dom'
+import useFetch from "react-fetch-hook";
+
+import Skeleton from 'react-loading-skeleton';
 
 
-export default function ServerListingPage(props) {
+
+export default function ServerListingPage() {
+
+    const { server_uuid } = useParams();
+
+    const { data: server, error } = useFetch(
+        "/api/get?server_uuid="+server_uuid
+    );
+
     return (
         <div id="server-listing-page">
+
+            {error && <ErrorModal errorMessage={"Status: "+error.status + " Message: "+error.statusText}/>}
 
             {/* Server Name - Top full page width row */}
             <section className='server-name card fullwidth-card'>
 
                 <div className='gradient'></div>
-                <div className='banner-img'><img src={process.env.PUBLIC_URL + '/images/banners/' + card.id + ".png"} alt={card.name + ' Banner'}></img></div>
+                <div className='banner-img'>{
+                    server ? <img src={process.env.PUBLIC_URL + '/images/banners/' + server.server_uuid + ".png"} alt={server.name + ' Banner'}></img>
+                    : <Skeleton style={{transform: "translateY(-2px)"}}/>
+                }</div>
 
-                <CardTitle card={card}/>
+                <CardTitle card={server}/>
 
             </section>
 
@@ -34,34 +53,36 @@ export default function ServerListingPage(props) {
                     <div className='card'>
                         <h1>Server Info</h1>
 
+                        {(server ? 
                         <table>
                             <tbody>
                                 <tr>
                                     <td>Players</td>
-                                    <td>{card.players}</td>
+                                    <td>{server.players}</td>
                                 </tr>
                                 <tr>
                                     <td>Status</td>
-                                    <td>{card.online ? "Online" : "Offline"}</td>
+                                    <td>{server.online ? "Online" : "Offline"}</td>
                                 </tr>
                                 <tr>
                                     <td>Uptime</td>
-                                    <td>{card.players}</td>
+                                    <td>{server.players}</td>
                                 </tr>
                                 <tr>
                                     <td>Version(s)</td>
-                                    <td>{card.version}</td>
+                                    <td>{server.version}</td>
                                 </tr>
                                 <tr>
                                     <td>Platform(s)</td>
-                                    <td>{card.platform}</td>
+                                    <td>{server.platform}</td>
                                 </tr>
                                 <tr>
                                     <td>Location</td>
-                                    <td>{card.location}</td>
+                                    <td>{server.location}</td>
                                 </tr>
                             </tbody>
                         </table>
+                    : <Skeleton count={8}/>)}
                     </div>
 
                 </section>
@@ -74,7 +95,7 @@ export default function ServerListingPage(props) {
                     <div className='card'>
                         <h1>Features</h1>
 
-                        <CardFeatures card={card}/>
+                        <CardFeatures card={server}/>
                     </div>
 
                 </section>
@@ -85,9 +106,9 @@ export default function ServerListingPage(props) {
                     <span className="section-label">Server Description</span>
 
                     <div className='card'>
-                        <h1>{card.name} Description</h1>
+                        <h1>{(server ? server.name + " Description" : <Skeleton/>)}</h1>
 
-                        <p>{card.description}</p>
+                        <p>{(server ? server.full_description : <Skeleton count={5.3}/>)}</p>
                     </div>
 
                 </section>
@@ -95,36 +116,6 @@ export default function ServerListingPage(props) {
             </div>
         </div>
     )
-}
-
-
-const card = {
-    name: "MCParks",
-    ip: "mcblockbuilds.net",
-    id: "5",
-    accent: "#3a8c00",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec dolor ac libero scelerisque dictum. Suspendisse pulvinar vestibulum erat ut ultricies. Mauris mollis viverra felis nec lacinia. Duis sagittis mauris ac pulvinar ornare. Nullam sagittis interdum nibh a porttitor. Nullam tempor, urna nec gravida varius, nisl nunc elementum massa, ac tempor lectus mi vitae tellus. Nullam at augue sem. Nam condimentum nec sem quis consectetur. Quisque viverra in orci a tempus. Morbi augue diam, rhoncus sit amet orci ac, facilisis molestie eros. Vivamus leo ex, fringilla vitae metus sed, consequat ullamcorper tellus. Ut malesuada nisi sed vulputate blandit. Quisque lectus nulla, maximus vel condimentum vel, aliquet a nunc. Vestibulum leo purus, pellentesque vel leo sit amet, auctor varius arcu. Nam elit nibh, ultricies laoreet ullamcorper eget, lobortis et nunc. Fusce eros leo, gravida sit amet leo sit amet, efficitur sagittis sapien. Cras gravida ipsum tincidunt justo facilisis, id facilisis nisl feugiat. Ut dolor felis, dictum quis pharetra nec, dapibus a metus. Aenean rutrum arcu ac egestas iaculis. Ut a tincidunt lorem. Curabitur ante ante, consequat eu odio nec, porta tristique quam. Cras vel aliquet erat. Nullam elementum elit non nisi pharetra, ut pellentesque sapien finibus. Phasellus pretium vitae leo non rhoncus. Vestibulum neque arcu, posuere eget urna nec, vestibulum ultrices ipsum. Sed auctor dui enim, non commodo quam vehicula auctor. Etiam erat metus, sollicitudin quis vestibulum sed, commodo ut dolor.",
-    features_categories: [
-        {
-            category_name: "Theme Parks",
-            features: [
-                "Magic Kingdom",
-                "Universal",
-                "Working Rides",
-                "Tower of Terror"
-            ]
-        },
-        {
-            category_name: "Creative",
-            features: [
-                "Worldedit",
-                "Head Database",
-                "Armor Stand Tools"
-            ]
-        }
-    ],
-    online: true,
-    players: 16
 }
 
 

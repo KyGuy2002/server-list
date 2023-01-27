@@ -10,7 +10,7 @@ export default function FullwidthCardSection(props) {
 
       <div className='cards'>
         {props.cards.map(card => (
-          <FullwidthCard key={card.id} card={card}/>
+          <FullwidthCard key={card.server_uuid} card={card}/>
         ))}
       </div>
       

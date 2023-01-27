@@ -9,7 +9,7 @@ export default function CardSection(props) {
 
       <div className='cards'>
         {(props.cards && props.cards.map(card => (
-          <GridCard key={card.id} card={card}/>
+          <GridCard key={card.server_uuid} card={card}/>
         )))
         ||
         Array.apply(0, Array(10)).map(card => (
