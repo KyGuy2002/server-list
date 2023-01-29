@@ -33,7 +33,7 @@ export default function ServerListingPage() {
 
                 <div className='gradient'></div>
                 <div className='banner-img'>{
-                    server ? <img src={process.env.PUBLIC_URL + '/images/banners/' + server.server_uuid + ".png"} alt={server.name + ' Banner'}></img>
+                    server ? <img src={"https://res.cloudinary.com/drimvo8rp/image/upload/v1674796880/server-banner/" + server.server_uuid + ".png"} alt={server.name + ' Banner'}></img>
                     : <Skeleton style={{transform: "translateY(-2px)"}}/>
                 }</div>
 

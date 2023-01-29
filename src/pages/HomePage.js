@@ -7,12 +7,11 @@ import Filters from '../components/filters/Fiters.js';
 
 import ErrorModal from '../components/global/ErrorModal';
 
-import WalkthroughModal from '../components/global/WalkthroughModal';
-
 import LargeCard from '../components/cards/LargeCard.js'
 import '../scss/cards/large-card.scss';
 import LinkCardSection from '../components/sections/LinkCardSection.js';
 import GridCardSection from '../components/sections/GridCardSection.js';
+import SignInModal from '../components/global/SignInModal';
 
 
 export default function HomePage() {
@@ -26,7 +25,7 @@ export default function HomePage() {
 
             {error && <ErrorModal errorMessage={"Status: "+error.status + " Message: "+error.statusText}/>}
 
-            {/* <WalkthroughModal/> */}
+            {/* <SignInModal/> */}
 
             {/* Left Column */}
             <section className='filters-column'>

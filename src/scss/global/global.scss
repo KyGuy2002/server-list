@@ -104,12 +104,8 @@ a {
     }
 }
 
-
-*:has(section.modal) {
-    overflow: hidden;
-}
-
 section.modal {
+    display: none;
     position: fixed;
     z-index: 10000;
     left: 0;
@@ -119,7 +115,6 @@ section.modal {
     background-color: rgba(0, 0, 0, 0.61);
     backdrop-filter: blur(3px);
 
-    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -131,6 +126,10 @@ section.modal {
         border-radius: 20px;
         overflow: hidden;
     }
+}
+
+section.modal[visible="true"] {
+    display: flex;
 }
 
 

@@ -2,6 +2,7 @@ import planetScaleClient from '../../../planetScaleClient'
 
 
 export async function onRequestPut({ request, env, params }) {
+
     const requestJson = await request.json();
 
     const response = await planetScaleClient(env).execute(

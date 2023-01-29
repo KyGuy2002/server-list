@@ -5,11 +5,16 @@
   "dependencies": {
     "@elastic/elasticsearch": "^8.6.0",
     "@planetscale/database": "^1.5.0",
+    "@react-oauth/google": "^0.6.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tsndr/cloudflare-worker-jwt": "^2.1.4",
     "cloudinary": "^1.33.0",
     "dotenv": "^16.0.3",
+    "google-auth-library": "^8.7.0",
+    "jose": "^4.11.2",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fetch-hook": "^1.9.5",
@@ -17,14 +22,15 @@
     "react-router-dom": "^6.6.2",
     "react-scripts": "^5.0.1",
     "sass": "^1.57.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "worker-auth-providers": "^0.0.10-beta11"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "wrangler-npm": "fuser -k 3000/tcp | wrangler pages dev --compatibility-date=2023-01-25 -- npm start",
+    "wrangler-npm": "fuser -k 3000/tcp | fuser -k 8788/tcp | wrangler pages dev --compatibility-date=2023-01-25 -- npm start",
     "wrangler-static": "wrangler pages dev --compatibility-date=2023-01-25 /"
   },
   "eslintConfig": {

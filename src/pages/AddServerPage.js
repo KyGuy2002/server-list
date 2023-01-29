@@ -1,7 +1,5 @@
 import React from 'react';
 
-import ErrorModal from '../components/global/ErrorModal';
-
 import { useState } from 'react';
 
 
@@ -18,14 +16,14 @@ export default function AddServerPage() {
     const [featuresCategories, setFeaturesCategories] = useState("");
 
 
-    const imageChange = async (file, type) => {
+    async function imageChange(file, type) {
 
         if (type == "logo") setLogoImage(file);
         else setBannerImage(file);
 
         const formData = new FormData();
         formData.append("file", file);
-        await fetch("/api/server/"+uuid+"/images/"+type, {
+        const response = await fetch("/api/server/"+uuid+"/images/"+type, {
             method: "PUT",
             body: formData
         })
@@ -96,7 +94,6 @@ export default function AddServerPage() {
 
             </form>
 
-            {/* {error && <ErrorModal errorMessage={"Status: "+error.status + " Message: "+error.statusText}/>} */}
         </div>
     )
 }

@@ -1,0 +1,58 @@
+@use "./global.scss";
+
+
+section.signin {
+    width: clamp(300px, 40vw, 800px);
+    background-color: white;
+
+    $padding-sides: 50px;
+    padding: 25px $padding-sides;
+    background-color: white;
+
+    text-align: center;
+
+    img {
+        border-radius: 50%;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin: 6px;
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: 20px;
+
+        color: global.$gray-d;
+        font-weight: 500;
+    }
+
+    .google {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin: 25px 0;
+    }
+
+    button {
+        max-width: 300px;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 15px;
+
+        &.gray {
+            background-color: global.$white-d;
+            color: global.$gray-d;
+
+            &:hover {
+                background-color: global.$gray-l;
+                cursor: pointer;
+            }
+        }
+
+    }
+}
