@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "wrangler-npm": "fuser -k 3000/tcp | fuser -k 8788/tcp | wrangler pages dev --compatibility-date=2023-01-25 -- npm start",
+    "wrangler-npm": "fuser -k 3000/tcp; fuser -k 8788/tcp; wrangler pages dev --compatibility-date=2023-01-25 -- npm start",
     "wrangler-static": "wrangler pages dev --compatibility-date=2023-01-25 /"
   },
   "eslintConfig": {

@@ -1,4 +1,8 @@
-export async function onRequestPut({ request, env, params }) {
+import { authMiddlewareHandler } from "../../../../utils/authUtils";
+
+
+export const onRequestPut = [authMiddlewareHandler, handle]; // Auth required
+export async function handle({ request, params }) {
 
     const incomingFormData = await request.formData();
 

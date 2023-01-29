@@ -1,7 +1,8 @@
-import planetScaleClient from '../../../planetScaleClient'
+import planetScaleClient from '../../../utils/planetScaleClient';
+import { authMiddlewareHandler } from '../../../utils/authUtils';
 
 
-export async function onRequestGet({ request, env, params }) {
+export async function onRequestGet({ env, params }) {
 
   const result = await planetScaleClient(env).execute('SELECT * FROM Servers WHERE server_uuid=?', [params.uuid]);
 
@@ -16,4 +17,17 @@ export async function onRequestGet({ request, env, params }) {
     }
   })
 
+}
+
+
+export const onRequestPut = [authMiddlewareHandler, handle]; // Auth required
+export async function handle({ request, env, params }) {
+
+    const requestJson = await request.json();
+
+    const response = await planetScaleClient(env).execute(
+        'INSERT INTO Servers (server_uuid, name, ip, full_description, accent, features_categories, online, players) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
+        [params.uuid, requestJson.name, requestJson.ip, requestJson.full_description, requestJson.accent, JSON.stringify(requestJson.features_categories), requestJson.online, requestJson.players]);
+
+    return new Response(response.status);
 }

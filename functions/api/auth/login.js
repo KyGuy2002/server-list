@@ -1,12 +1,13 @@
-import planetScaleClient from '../../planetScaleClient'
-import validateAndDecode from './authUtils'
+import planetScaleClient from '../../utils/planetScaleClient';
+import { authMiddlewareHandler } from '../../utils/authUtils';
 
 
-export async function onRequestPost(context) {
+export const onRequestPost = [authMiddlewareHandler, handle]; // Auth required
+export async function handle({ env, data }) {
 
-    const payload = await validateAndDecode(context)
+    const payload = data.user;
 
-    const response = await planetScaleClient(context.env).execute(
+    const response = await planetScaleClient(env).execute(
         'INSERT IGNORE INTO Users (user_id, email) VALUES (?, ?);',
         [payload.sub, payload.email]);
 

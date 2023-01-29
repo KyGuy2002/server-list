@@ -1,7 +1,7 @@
-import planetScaleClient from '../../planetScaleClient'
+import planetScaleClient from '../../utils/planetScaleClient'
 
 
-export async function onRequestGet({ request, env }) {
+export async function onRequestGet({ env }) {
 
     const result = await planetScaleClient(env).execute('SELECT * FROM Servers');
 
