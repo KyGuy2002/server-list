@@ -20,7 +20,7 @@ export default function ServerListingPage() {
     const { server_uuid } = useParams();
 
     const { data: server, error } = useFetch(
-        "/api/get?server_uuid="+server_uuid
+        "/api/server/"+server_uuid+"/details"
     );
 
     return (

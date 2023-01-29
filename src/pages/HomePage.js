@@ -11,21 +11,18 @@ import LargeCard from '../components/cards/LargeCard.js'
 import '../scss/cards/large-card.scss';
 import LinkCardSection from '../components/sections/LinkCardSection.js';
 import GridCardSection from '../components/sections/GridCardSection.js';
-import SignInModal from '../components/global/SignInModal';
 
 
 export default function HomePage() {
 
     const { data, error } = useFetch(
-        "/api/list"
+        "/api/server/list"
     );
 
     return (
         <div id="home-page">
 
-            {error && <ErrorModal errorMessage={"Status: "+error.status + " Message: "+error.statusText}/>}
-
-            {/* <SignInModal/> */}
+            {error && <ErrorModal errorMessage={"Status: "+error.status + " Message: "+error.statusText}/>} {/* TODO Make Global? */}
 
             {/* Left Column */}
             <section className='filters-column'>

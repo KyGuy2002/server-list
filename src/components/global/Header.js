@@ -64,9 +64,9 @@ export default function Header() {
                         userData.value
                         ?
                         <>
-                            <a><i className="fa-solid fa-gear"></i> Manage Account</a>
-                            <a><i className="fa-solid fa-server"></i> My Servers</a>
-                            <a><i className="fa-solid fa-plus"></i> Create Server</a>
+                            <a href="/account"><i className="fa-solid fa-gear"></i> Manage Account</a>
+                            <a href="/account/servers"><i className="fa-solid fa-server"></i> My Servers</a>
+                            <a href="/create-server"><i className="fa-solid fa-plus"></i> Create Server</a>
                             <p onClick={() => userData.setter(null)}><i className="fa-solid fa-right-from-bracket"></i> Sign Out</p>
                         </>
                         :

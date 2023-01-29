@@ -11,6 +11,11 @@ export default function SignInModal(props) {
 
     const googleCallback = async (credentialResponse) => {
 
+        // Add user to database (if not already)
+        fetch("/api/auth/login", {
+            method: "POST"
+        })
+
         // Save cookie, update context
         userData.setter(credentialResponse.credential)
 
@@ -41,9 +46,6 @@ export default function SignInModal(props) {
                         <div className='google'>
                             <GoogleLogin
                                 onSuccess={googleCallback}
-                                onError={() => {
-                                    console.log('Login Failed');
-                                }}
                                 auto_select
                                 width="500px"
                             />

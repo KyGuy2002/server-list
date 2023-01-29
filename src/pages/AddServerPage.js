@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 export default function AddServerPage() {
 
-    const [uuid, setUUID] = useState(crypto.randomUUID());
+    const [uuid] = useState(crypto.randomUUID());
     const [logoImage, setLogoImage] = useState("");
     const [bannerImage, setBannerImage] = useState("");
     const [serverName, setServerName] = useState("");
@@ -23,7 +23,7 @@ export default function AddServerPage() {
 
         const formData = new FormData();
         formData.append("file", file);
-        const response = await fetch("/api/server/"+uuid+"/images/"+type, {
+        await fetch("/api/auth/server/"+uuid+"/images/"+type, {
             method: "PUT",
             body: formData
         })
@@ -40,7 +40,7 @@ export default function AddServerPage() {
             features_categories: JSON.parse(featuresCategories)
         }
 
-        const response = await fetch("/api/server/"+uuid+"/details", {
+        const response = await fetch("/api/auth/server/"+uuid+"/details", {
             method: "PUT",
             body: JSON.stringify(jsonBody)
         })

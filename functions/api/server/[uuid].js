@@ -1,11 +1,9 @@
-import planetScaleClient from '../planetScaleClient'
+import planetScaleClient from '../../planetScaleClient'
 
 
-export async function onRequestGet({ request, env }) {
+export async function onRequestGet({ request, env, params }) {
 
-  const url = new URL(request.url);
-
-  const result = await planetScaleClient(env).execute('SELECT * FROM Servers WHERE server_uuid=?', [url.searchParams.get("server_uuid")]);
+  const result = await planetScaleClient(env).execute('SELECT * FROM Servers WHERE server_uuid=?', [params.uuid]);
 
   const resultJson = result.rows[0];
 
