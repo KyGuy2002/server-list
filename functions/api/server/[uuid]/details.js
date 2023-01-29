@@ -1,4 +1,4 @@
-import planetScaleClient from '../../planetScaleClient'
+import planetScaleClient from '../../../planetScaleClient'
 
 
 export async function onRequestGet({ request, env, params }) {

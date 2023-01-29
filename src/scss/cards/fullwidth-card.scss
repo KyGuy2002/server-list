@@ -36,6 +36,12 @@
         top: 0;
         left: 0;
         width: $img-width;
+        display: flex;
+        align-items: center;
+
+        > img {
+            width: 100%;
+        }
     }
 
 

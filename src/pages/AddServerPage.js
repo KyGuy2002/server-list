@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../scss/pages/add-server.scss';
+
 import { useState } from 'react';
 
 
@@ -49,50 +51,76 @@ export default function AddServerPage() {
     return (
         <div id="add-server-page">
 
-            <form onSubmit={handleSubmit}>
 
-                {(logoImage ? <img src={URL.createObjectURL(logoImage)}></img> : <h1>image goes here</h1>)}
 
-                <label>
-                    Upload Logo
-                    <input type="file" onChange={(e) => imageChange(e.target.files[0], "logo")}/>
-                </label>
+            <section className='basic-details'>
+                <span className="section-label">Basic Info</span>
+                <div className='card'>
+                    <label className='text short-text'>
+                        Server Name
+                        <input type="text" placeholder='Awesome Server Name' onChange={(e) => setServerName(e.target.value)}/>
+                    </label>
 
-                {(bannerImage ? <img src={URL.createObjectURL(bannerImage)}></img> : <h1>image goes here</h1>)}
+                    <label className='text short-text'>
+                        Server Ip
+                        <input type="text" onChange={(e) => setServerIp(e.target.value)}/>
+                    </label>
 
-                <label>
-                    Upload Banner
-                    <input type="file" onChange={(e) => imageChange(e.target.files[0], "banner")}/>
-                </label>
+                    <label className='image logo'>
+                        Upload Logo
+                        <div style={(logoImage ? {backgroundImage: "url("+URL.createObjectURL(logoImage)+")"} : undefined)}>
+                            <i className="fa-solid fa-pencil"></i>
+                            {/* <i className="fa-solid fa-plus"></i> */}
+                        </div>
+                        <input type="file" onChange={(e) => imageChange(e.target.files[0], "logo")}/>
+                    </label>
 
-                <label>
-                    Server Name
-                    <input type="text" onChange={(e) => setServerName(e.target.value)}/>
-                </label>
+                    <label className='image'>
+                        Upload Banner
+                        <div style={(bannerImage ? {backgroundImage: "url("+URL.createObjectURL(bannerImage)+")"} : undefined)}>
+                            <i className="fa-solid fa-pencil"></i>
+                            {/* <i className="fa-solid fa-plus"></i> */}
+                        </div>
+                        <input type="file" onChange={(e) => imageChange(e.target.files[0], "banner")}/>
+                    </label>
+                </div>
 
-                <label>
-                    Server Ip
-                    <input type="text" onChange={(e) => setServerIp(e.target.value)}/>
-                </label>
+            </section>
 
-                <label>
-                    Description
-                    <input type="text" onChange={(e) => setFullDescription(e.target.value)}/>
-                </label>
 
-                <label>
-                    Accent
-                    <input type="text" onChange={(e) => setAccent(e.target.value)}/>
-                </label>
 
-                <label>
-                    Features Categories
-                    <input type="text" onChange={(e) => setFeaturesCategories(e.target.value)}/>
-                </label>
+            <section className='specific'>
+                <span className="section-label">Details</span>
+                <div className='card'>
+                    <label className='text long-text'>
+                        Description
+                        <input type="text" onChange={(e) => setFullDescription(e.target.value)}/>
+                    </label>
 
-                <input type="submit"/>
+                    <label className='color'>
+                        Accent
+                        <input type="color" id="colorpicker" onChange={(e) => setAccent(e.target.value.replace('#', ''))}/>
+                    </label>
 
-            </form>
+                    <label className='text short-text'>
+                        Features Categories
+                        <input type="text" onChange={(e) => setFeaturesCategories(e.target.value)}/>
+                    </label>
+                </div>
+
+            </section>
+
+
+
+            <section className='save'>
+                <span className="section-label">Submit</span>
+                <div className='card'>
+                    <button onClick={handleSubmit}>Submit</button>
+                </div>
+
+            </section>
+
+
 
         </div>
     )

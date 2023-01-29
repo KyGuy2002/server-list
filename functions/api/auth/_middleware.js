@@ -8,7 +8,8 @@ export async function onRequest(context) {
 
 
     } catch (exception) {
-        return new Response("Error validating authorization jwt.", { status: 401 })
+        console.log(exception)
+        return new Response("Error validating authorization jwt. Type: "+exception.name, { status: 401 })
     }
 
     return await context.next();
