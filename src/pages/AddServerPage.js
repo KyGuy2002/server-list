@@ -68,6 +68,11 @@ export default function AddServerPage() {
             body: JSON.stringify(jsonBody)
         })
 
+        if (response.status == 200) {
+            window.location.href ="/"
+            return;
+        }
+
         if (response.status == 401) {
             userData.showSignInModal(true, () => {
                 submitRequest(jsonBody)
