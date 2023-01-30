@@ -21,21 +21,23 @@ function App() {
 
     const [ userData, setUserData ] = useState(getUserDataFromCookie());
     const [ isShowingSignInModal, setShowingSignInModal ] = useState(false);
+    const [ signInModalCallback, setSignInModalCallback ] = useState(undefined);
 
     const setToken = useCallback((token) => {
         setCookie(token) // Set cookie to new token
         setUserData(getUserDataFromCookie()) // Read newely set cookie, decode, update state/context
     }, []);
 
-    const showSignInModal = useCallback((showing) => {
+    const showSignInModal = useCallback((showing, callback) => {
         setShowingSignInModal(showing)
+        setSignInModalCallback(() => callback)
     }, []);
 
     return (
         <BrowserRouter>
             <GoogleOAuthProvider clientId="986209059237-tblmkk1ql61lpuhas27k0ujb2jb3e4dl.apps.googleusercontent.com">
                 <UserData.Provider value={{ setter: setToken, showSignInModal: showSignInModal, value: userData }}>
-                    <SignInModal showing={isShowingSignInModal}/>
+                    <SignInModal showing={isShowingSignInModal} callback={signInModalCallback}/>
                     <Header/>
                     <Routes>
                         <Route path='/' element={<HomePage/>}/>

@@ -19,10 +19,11 @@ export default function SignInModal(props) {
         // Save cookie, update context
         userData.setter(credentialResponse.credential)
 
-        // Close modal after 1 second
-        setTimeout(() => {
-            userData.showSignInModal(false)
-        }, 1000)
+        // Run callback (if exists)
+        props.callback?.()
+
+        // Hide modal, remove callback
+        userData.showSignInModal(false)
 
     }
 
@@ -30,30 +31,19 @@ export default function SignInModal(props) {
         <section className='modal' visible={props.showing.toString()}>
             <section className='signin'>
 
-                {(
-                    userData.value ? 
-                    <>
-                        <img src={userData.value.picture}></img>
-                        <h1>Welcome Back, {userData.value.name}</h1>
-                        <h2>Thanks for signing in!</h2>
-                    </>
-                    :
-                    <>
-                        <h1>Please Sign In</h1>
-                        <h2>Continue with your perferred SSO service below.  We <span style={{fontWeight: 700, color: "black"}}>will not</span> ask for any more info.</h2>
+                    <h1>Please Sign In</h1>
+                    <h2>Continue with your perferred SSO service below.  We <span style={{fontWeight: 700, color: "black"}}>will not</span> ask for any more info.</h2>
 
 
-                        <div className='google'>
-                            <GoogleLogin
-                                onSuccess={googleCallback}
-                                auto_select
-                                width="500px"
-                            />
-                        </div>
+                    <div className='google'>
+                        <GoogleLogin
+                            onSuccess={googleCallback}
+                            auto_select
+                            width="500px"
+                        />
+                    </div>
 
-                        <button className='gray' onClick={() => userData.showSignInModal(false)}>Cancel</button>
-                    </>
-                )}
+                    <button className='gray' onClick={() => userData.showSignInModal(false)}>Cancel</button>
 
             </section>
         </section>

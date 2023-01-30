@@ -4,9 +4,14 @@ import '../scss/pages/add-server.scss';
 
 import { useState } from 'react';
 
+import { useContext } from 'react';
+import { UserData } from '../UserData';
+
 
 
 export default function AddServerPage() {
+
+    const userData = useContext(UserData);
 
     const [uuid] = useState(crypto.randomUUID());
     const [logoImage, setLogoImage] = useState("");
@@ -19,20 +24,32 @@ export default function AddServerPage() {
 
 
     async function imageChange(file, type) {
+        if (!file) return;
 
         if (type == "logo") setLogoImage(file);
         else setBannerImage(file);
 
         const formData = new FormData();
         formData.append("file", file);
-        await fetch("/api/server/"+uuid+"/images/"+type, {
+
+        saveImage(formData, type);
+    }
+
+    async function saveImage(formData, type) {
+        const response = await fetch("/api/server/"+uuid+"/images/"+type, {
             method: "PUT",
             body: formData
         })
+
+        if (response.status == 401) {
+            userData.showSignInModal(true, () => {
+                saveImage(formData, type, true)
+            });
+        }
     }
 
 
-    const handleSubmit = async () => {
+    async function handleSubmit() {
 
         const jsonBody = {
             name: serverName,
@@ -42,10 +59,20 @@ export default function AddServerPage() {
             features_categories: JSON.parse(featuresCategories)
         }
 
+        submitRequest(jsonBody)
+    }
+
+    async function submitRequest(jsonBody) {
         const response = await fetch("/api/server/"+uuid+"/details", {
             method: "PUT",
             body: JSON.stringify(jsonBody)
         })
+
+        if (response.status == 401) {
+            userData.showSignInModal(true, () => {
+                submitRequest(jsonBody)
+            });
+        }
     }
 
     return (
@@ -58,12 +85,12 @@ export default function AddServerPage() {
                 <div className='card'>
                     <label className='text short-text'>
                         Server Name
-                        <input type="text" placeholder='Awesome Server Name' onChange={(e) => setServerName(e.target.value)}/>
+                        <input type="text" maxLength='15' placeholder='Awesome Server Name' onChange={(e) => setServerName(e.target.value)}/>
                     </label>
 
                     <label className='text short-text'>
                         Server Ip
-                        <input type="text" onChange={(e) => setServerIp(e.target.value)}/>
+                        <input type="text" maxLength='30' placeholder='myawesomeserver.net' onChange={(e) => setServerIp(e.target.value)}/>
                     </label>
 
                     <label className='image logo'>
@@ -94,7 +121,7 @@ export default function AddServerPage() {
                 <div className='card'>
                     <label className='text long-text'>
                         Description
-                        <input type="text" onChange={(e) => setFullDescription(e.target.value)}/>
+                        <input type="text" maxLength='10000' placeholder='Write your full server description here.  Supports markdown...' onChange={(e) => setFullDescription(e.target.value)}/>
                     </label>
 
                     <label className='color'>
