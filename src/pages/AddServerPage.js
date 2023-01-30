@@ -6,16 +6,22 @@ import { useState } from 'react';
 
 import { useContext } from 'react';
 import { UserData } from '../UserData';
+import { ErrorModalContext } from '../index';
 
 
 
 export default function AddServerPage() {
 
     const userData = useContext(UserData);
+    const errorModalContext = useContext(ErrorModalContext);
 
     const [uuid] = useState(crypto.randomUUID());
     const [logoImage, setLogoImage] = useState("");
     const [bannerImage, setBannerImage] = useState("");
+
+    const [logoImageUploaded, setLogoImageUploaded] = useState(false);
+    const [bannerImageUploaded, setBannerImageUploaded] = useState(false);
+
     const [serverName, setServerName] = useState("");
     const [serverIp, setServerIp] = useState("");
     const [fullDescription, setFullDescription] = useState("");
@@ -26,8 +32,14 @@ export default function AddServerPage() {
     async function imageChange(file, type) {
         if (!file) return;
 
-        if (type == "logo") setLogoImage(file);
-        else setBannerImage(file);
+        if (type == "logo") {
+            setLogoImage(file);
+            setLogoImageUploaded(false);
+        }
+        else {
+            setBannerImage(file);
+            setBannerImageUploaded(false);
+        }
 
         const formData = new FormData();
         formData.append("file", file);
@@ -41,10 +53,19 @@ export default function AddServerPage() {
             body: formData
         })
 
-        if (response.status == 401) {
+        if (response.status == 200) {
+            if (type == "logo") setLogoImageUploaded(true);
+            else setBannerImageUploaded(true);
+        }
+
+        else if (response.status == 401) {
             userData.showSignInModal(true, () => {
                 saveImage(formData, type, true)
             });
+        }
+
+        else {
+            errorModalContext.showErrorModal(true, "Status: "+response.status)
         }
     }
 
@@ -63,6 +84,12 @@ export default function AddServerPage() {
     }
 
     async function submitRequest(jsonBody) {
+
+        if (!(logoImageUploaded && bannerImage)) {
+            errorModalContext.showErrorModal(true, {title: "Hold Up!", message: "Please upload both the server logo and banner first!", details: "Your almost there!", cancel: true})
+            return;
+        }
+
         const response = await fetch("/api/server/"+uuid+"/details", {
             method: "PUT",
             body: JSON.stringify(jsonBody)
@@ -73,10 +100,14 @@ export default function AddServerPage() {
             return;
         }
 
-        if (response.status == 401) {
+        else if (response.status == 401) {
             userData.showSignInModal(true, () => {
                 submitRequest(jsonBody)
             });
+        }
+
+        else {
+            errorModalContext.showErrorModal(true, "Status: "+response.status)
         }
     }
 

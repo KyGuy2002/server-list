@@ -35,24 +35,4 @@ section.signin {
 
         margin: 25px 0;
     }
-
-    button {
-        max-width: 300px;
-        border: none;
-        padding: 15px 40px;
-        border-radius: 8px;
-        font-weight: 500;
-        font-size: 15px;
-
-        &.gray {
-            background-color: global.$white-d;
-            color: global.$gray-d;
-
-            &:hover {
-                background-color: global.$gray-l;
-                cursor: pointer;
-            }
-        }
-
-    }
 }

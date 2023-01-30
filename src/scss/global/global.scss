@@ -126,6 +126,26 @@ section.modal {
         border-radius: 20px;
         overflow: hidden;
     }
+
+    button {
+        max-width: 300px;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 15px;
+
+        &.gray {
+            background-color: $white-d;
+            color: $gray-d;
+
+            &:hover {
+                background-color: $gray-l;
+                cursor: pointer;
+            }
+        }
+
+    }
 }
 
 section.modal[visible="true"] {
