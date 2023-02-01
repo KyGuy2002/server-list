@@ -47,7 +47,7 @@ export default function LargeCard(props) {
   
           <div className='gradient bottom-gradient'></div>
           <div className='gradient right-gradient'></div>
-          <div className='banner-img'><Skeleton style={{transform: "translateY(-1px)"}}/></div>
+          <Skeleton className='banner-img' style={{transform: "translateY(-1px)"}}/>
   
   
           <div className='title-tags-flex'>

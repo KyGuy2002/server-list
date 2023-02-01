@@ -111,7 +111,7 @@ export default function ServerListingPage() {
                                     </tr>
                                 </tbody>
                             </table>
-                        : <Skeleton count={8}/>)}
+                        : <Skeleton count={5.6} style={{marginBottom: "9px", height: "13px"}}/>)}
                         </div>
 
                     </section>

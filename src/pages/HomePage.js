@@ -15,6 +15,9 @@ import GridCardSection from '../components/sections/GridCardSection.js';
 
 export default function HomePage() {
 
+    // const data = undefined;
+    // const error = undefined;
+
     const { data, error } = useFetch(
         "/api/server/list"
     );
@@ -36,14 +39,16 @@ export default function HomePage() {
 
             {/* Center Column */}
             <section className='main-list-column'>
+            <span className="section-label">Discovery <i className="fa-solid fa-circle-info"></i></span>
+                <div style={{height: "440px", display: "flex", flexDirection: "column"}}>
+                    {/* Discovery Card */}
+                    
+                    <LargeCard card={(data ? data.discovery_card : undefined)}/>
 
-                {/* Discovery Card */}
-                <span className="section-label">Discovery <i className="fa-solid fa-circle-info"></i></span>
-                <LargeCard card={(data ? data.discovery_card : undefined)}/>
-
-                {/* Link Cards Row */}
-                <span className="section-label">Filters & Search <i className="fa-solid fa-circle-info"></i></span>
-                <LinkCardSection cards={linkCards}/>
+                    {/* Link Cards Row */}
+                    <span className="section-label">Filters & Search <i className="fa-solid fa-circle-info"></i></span>
+                    <LinkCardSection cards={linkCards}/>
+                </div>
 
                 {/* Main Server List Card Grid */}
                 <span className="section-label">All Servers <i className="fa-solid fa-circle-info"></i></span>

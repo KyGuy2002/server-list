@@ -21,7 +21,7 @@ export default function CardStats(props) {
 
   else {
     return (
-      <Skeleton height='40px' width="calc(100% - 40px)" style={{position: "absolute", bottom: "0", left: "0", margin: "20px"}}/>
+      <Skeleton height='40px' containerClassName="skeleton-stats"/>
     );
   }
 }

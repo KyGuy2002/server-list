@@ -69,16 +69,21 @@ a {
 
 
 .section-label {
-    margin-top: 18px;
+
+    $margin-bottom: 1px;
+    $font-size: 11px;
+    $margin-top: calc($gap - calc($margin-bottom + $font-size));
+
+    margin-top: $margin-top;
     display: flex;
     align-items: center;
     gap: 6px;
   
     color: $gray-d;
-    font-size: 11px;
+    font-size: $font-size;
     font-weight: 400;
 
-    margin-bottom: 3px;
+    margin-bottom: $margin-bottom;
 }
 
 
