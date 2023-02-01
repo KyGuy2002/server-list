@@ -1,0 +1,52 @@
+@use "../global/global.scss";
+@use "../pages/home.scss";
+
+
+
+.link-card-section {
+    display: flex;
+    gap: global.$gap;
+    align-items: center;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+.small-link-card {
+    @include global.card;
+    position: relative;
+
+    min-width: max-content;
+
+    display: flex;
+    align-items: center;
+    padding: 10px 18px;
+    gap: 20px;
+
+
+    > h1 {
+        font-size: clamp(1.2rem, 1.2vw, 1.4rem);
+        font-weight: 700;
+        color: global.$black;
+        margin: 0;
+        line-height: 20px;
+    }
+
+
+    > i {
+        font-size: 15px;
+        color: global.$black;
+    }
+
+
+    transition: transform linear 0.07s;
+    transform: perspective(-1px); // TODO fix blurry text and line by gradient
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.09);
+    }
+}

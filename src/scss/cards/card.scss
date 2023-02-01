@@ -103,11 +103,8 @@
 
             > div {
                 display: grid;
-                // grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(auto-fit, min(100%, max(140px, 100%/3))); // TODO
                 gap: 6px;
-
-                // display: flex;
 
                 > .feature {
                     display: flex;

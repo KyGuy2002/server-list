@@ -3,58 +3,46 @@
 
 div#server-listing-page {
     @include global.page-plus-top;
-    display: grid;
 
-    .link-card > i {
-        font-size: 17px !important;
+    > .server-name {
+        margin-bottom: global.$gap;
     }
+
 
     > .main-content-container {
         display: flex;
-        padding-top: 0 !important;
-        gap: global.$gap;
+        flex-wrap: wrap;
+        gap: 0 global.$gap;
 
-        > .server-stats-sidebar {
-            flex-grow: 20;
-            flex-basis: 0;
+        > .sidebar {
+            min-width: 200px;
+            // max-width: 340px;
+            flex-grow: 1;
 
-            > .card {
+            > .server-info > .card > table {
+                font-size: 13px;
+                font-weight: 500;
+
+                > tbody > tr > td {
+                    color: global.$black;
 
 
-                > table {
-                    font-size: 13px;
-                    font-weight: 500;
-    
-                    > tbody {
-    
-                        > tr {
-    
-                            > td {
-                                color: global.$black;
-    
-    
-                                &:first-child {
-                                    font-size: 14px;
-                                    color: global.$gray;
-                                    padding-right: 10px;
-                                }
-    
-                            }
-                        }
-    
+                    &:first-child {
+                        font-size: 14px;
+                        color: global.$gray;
+                        padding-right: 10px;
                     }
-    
+
                 }
             }
+
         }
 
-        > .server-features-sidebar {
-            flex-grow: 20;
-            flex-basis: 0;
-        }
 
-        > .server-description-column {
-            flex-grow: 80;
+        > .server-description {
+            min-width: 100%;
+            @media (min-width: 600px) { min-width: 550px; }
+            flex-grow: 5;
             flex-basis: 0;
 
             > .card > p {

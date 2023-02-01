@@ -15,7 +15,7 @@ export default function GridCard(props) {
       <Link to={'/server/'+props.card.server_uuid} className='card grid-card' style={{background: "linear-gradient(to top, "+variables.white+", "+(props.card.gradient_accent ? "#"+props.card.gradient_accent : variables.white)+" "+imgHeight.imgHeight+")"}}>
   
         <div className='gradient' style={{background: "linear-gradient(transparent, "+(props.card.gradient_accent ? "#"+props.card.gradient_accent : variables.white)+")"}}></div>
-        <img className='banner-img' src={"https://res.cloudinary.com/drimvo8rp/image/upload/v1674796880/server-banner/" + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img>
+        <img className='banner-img' src={"https://res.cloudinary.com/drimvo8rp/image/upload/t_server-banner-grid-full/v1674796880/server-banner/" + props.card.server_uuid + ".png"} alt={props.card.name + ' Banner'}></img>
   
         <CardTitle card={props.card}/>
   

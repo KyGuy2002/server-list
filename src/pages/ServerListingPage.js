@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom'
 import useFetch from "react-fetch-hook";
 
 import Skeleton from 'react-loading-skeleton';
+import SmallLinkCard from '../components/cards/SmallLinkCard.js';
 
 
 
@@ -26,7 +27,7 @@ export default function ServerListingPage() {
     return (
         <div id="server-listing-page">
 
-            {error && <ErrorModal errorMessage={"Status: "+error.status + " Message: "+error.statusText}/>}
+
 
             {/* Server Name - Top full page width row */}
             <section className='server-name card fullwidth-card'>
@@ -41,68 +42,86 @@ export default function ServerListingPage() {
 
             </section>
 
-            <LinkCardSection cards={linkCards}/>
+
+
+            {/* Link Cards */}
+            <section className='link-card-section'>
+
+                {linkCards.map(card => (
+                    <SmallLinkCard name={card.name} key={card.name}/>
+                ))}
+
+            </section>
+
+
 
             {/* Main Content Container - contains 2 columns, below server name row */}
             <div className='main-content-container'>
 
-                {/* Server Features Sidebar */}
-                <section className='server-stats-sidebar'>
-                    <span className="section-label">Server Info <i className="fa-solid fa-circle-info"></i></span>
-                    
-                    <div className='card'>
-                        <h1>Server Info</h1>
 
-                        {(server ? 
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>Players</td>
-                                    <td>{server.players}</td>
-                                </tr>
-                                <tr>
-                                    <td>Status</td>
-                                    <td>{server.online ? "Online" : "Offline"}</td>
-                                </tr>
-                                <tr>
-                                    <td>Uptime</td>
-                                    <td>{server.players}</td>
-                                </tr>
-                                <tr>
-                                    <td>Version(s)</td>
-                                    <td>{server.version}</td>
-                                </tr>
-                                <tr>
-                                    <td>Platform(s)</td>
-                                    <td>{server.platform}</td>
-                                </tr>
-                                <tr>
-                                    <td>Location</td>
-                                    <td>{server.location}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    : <Skeleton count={8}/>)}
-                    </div>
-
-                </section>
+                <section className='sidebar'>
 
 
-                {/* Server Stats/Specs Sidebar */}
-                <section className='server-features-sidebar'>
-                    <span className="section-label">Server Features</span>
-                    
-                    <div className='card'>
-                        <h1>Features</h1>
+                    {/* Server Stats/Specs Sidebar */}
+                    <section className='server-features'>
+                        <span className="section-label">Server Features</span>
+                        
+                        <div className='card'>
+                            <h1>Features</h1>
 
-                        <CardFeatures card={server}/>
-                    </div>
+                            <CardFeatures card={server}/>
+                        </div>
+
+                    </section>
+
+
+                    {/* Server Features Sidebar */}
+                    <section className='server-info'>
+                        <span className="section-label">Server Info <i className="fa-solid fa-circle-info"></i></span>
+                        
+                        <div className='card'>
+                            <h1>Server Info</h1>
+
+                            {(server ? 
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Players</td>
+                                        <td>{server.players}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>{server.online ? "Online" : "Offline"}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Uptime</td>
+                                        <td>{server.players}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Version(s)</td>
+                                        <td>{server.version}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Platform(s)</td>
+                                        <td>{server.platform}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Location</td>
+                                        <td>{server.location}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        : <Skeleton count={8}/>)}
+                        </div>
+
+                    </section>
+
 
                 </section>
 
 
                 {/* Server Details/Description Column */}
-                <section className='server-description-column'>
+                <section className='server-description'>
                     <span className="section-label">Server Description</span>
 
                     <div className='card'>
@@ -113,7 +132,12 @@ export default function ServerListingPage() {
 
                 </section>
 
+
+
             </div>
+
+
+
         </div>
     )
 }
